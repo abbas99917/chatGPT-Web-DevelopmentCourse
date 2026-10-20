@@ -1,0 +1,27 @@
+body{
+    background-color: rgb(148, 247, 148);
+}
+
+#heading{
+    color: darkblue;
+    text-align: center;
+    padding: 20px;
+}
+.intro{
+    font-size: 18px;
+}
+
+button{
+    background-color: green;
+    color: white;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+button:hover{
+    background-color: rgb(64, 241, 64);
+}
+
+footer{
+    text-align: center;
+}
