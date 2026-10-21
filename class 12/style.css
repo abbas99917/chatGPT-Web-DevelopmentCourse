@@ -1,0 +1,12 @@
+.parent{
+    position: relative;
+}
+
+.box{
+    height: 200px;
+    width: 200px;
+    background-color: red;
+    position: fixed;
+  bottom: 200px;
+    right: 5px;
+}
