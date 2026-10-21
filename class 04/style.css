@@ -1,0 +1,13 @@
+h1{
+    text-align: center;
+}
+.skill-box{
+    padding: 20px;
+    border: 2px solid  black;
+    margin: 15px;
+    width: 400px;
+    background-color: rgb(145, 248, 145);
+    border-radius: 12px;
+    box-sizing: border-box;
+    margin: auto;
+}
