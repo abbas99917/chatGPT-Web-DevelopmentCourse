@@ -1,0 +1,12 @@
+.one{
+    background: #4c04f5;
+}
+.two{
+    background-color: green;
+    /* display: none; */
+    visibility: hidden;
+}
+.three{
+    background-color: red;
+}
+

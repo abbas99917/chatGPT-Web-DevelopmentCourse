@@ -1,0 +1,13 @@
+div:first-child{
+background-color: yellow;
+display: inline-block;
+width: 200px;
+}
+
+div:last-child{
+    background-color: green;
+    display: inline-block;
+    width: 200px;
+}
+
+/* inline element pr height our width work nhi krty hai ----- jbky inline-block pr work krty hai */
