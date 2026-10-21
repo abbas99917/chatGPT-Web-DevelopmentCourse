@@ -1,0 +1,39 @@
+
+
+.skills{
+border-radius: 5px;
+margin: 10px;
+width: 150px;
+box-sizing: border-box;
+padding: 10px;
+
+}
+
+
+.html{
+background-color: gray;
+}
+.html:hover{
+    background-color: rgb(75, 74, 74);
+}
+.css{
+    background-color: red;
+}
+.css:hover{
+    background-color: rgb(241, 62, 62);
+}
+.js{
+    background-color: rgb(250, 4, 188);  
+}
+.js:hover{
+    background-color: aqua;
+}
+
+.container{
+    display: flex;
+    justify-content: end;
+    /* align-items: flex-start; */
+    align-items: flex-end;
+    background-color: aquamarine;
+    height: 300px;
+}
