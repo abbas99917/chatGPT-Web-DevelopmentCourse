@@ -1,0 +1,48 @@
+        .container{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 10px;
+            grid-template-rows: repeat(2,300px);
+            /* grid-template-rows: repeat(3,100px); */
+            /* align-items: center ; */
+            
+        }
+
+        .box1{
+            width: 80px;
+            height: 80px;
+            background-color: red;
+            grid-column: span 2
+        }
+        .box2{
+            /* width: 80px; */
+            /* height: 80px; */
+            background-color: yellow;
+            grid-row: span 2;
+
+        }
+        .box3{
+            /* width: 80px; */
+            /* height: 80px; */
+            background-color: blue;
+            /* grid-column: 2/4; */
+
+        }
+        .box4{
+            /* width: 80px; */
+            /* height: 80px; */
+            background-color: aqua;
+
+        }
+        .box5{
+            width: 80px;
+            height: 80px;
+            background-color: brown;
+
+        }
+        .box6{
+            width: 80px;
+            height: 80px;
+            background-color: orange;
+
+        }
