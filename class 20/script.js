@@ -3,8 +3,11 @@
     
     btn.addEventListener("click",()=>{
         navMenu.classList.toggle("active")
+        if(navMenu.classList.contains("active")){
+              btn.textContent = "✕"
+        }else{
+            btn.textContent = "☰"
+        }
     })
 
-    navMenu.addEventListener("click",()=>{
-        navMenu.classList.remove("active")
-    })
+  
