@@ -9,6 +9,17 @@ body{
     /* height: 100%; */
 }
 
+
+#scroll-progress{
+     position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background-color: #2563eb;
+    z-index: 9999;
+    transition: width 0.1s linear;
+}
 .header{
     display: flex;
     position: relative;
@@ -565,7 +576,8 @@ button .fa-solid{
 }
 
 #back-to-top{
-    position: absolute;
+    position: fixed;
+    display: none;
     right: 10px;
     bottom: 20px;
     padding: 20px;
