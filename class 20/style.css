@@ -11,6 +11,7 @@ body{
 
 .header{
     display: flex;
+    position: relative;
     width: 100%;
     justify-content: space-around;
     align-items: center;
@@ -47,6 +48,13 @@ a{
     text-decoration: none;
     color: #272525;
     transition: 0.3s all;
+}
+#menu-btn{
+    font-size: 20px;
+    background-color: #2563eb;
+    color: white;
+    padding: 5px;
+    display: none;
 }
 
 .icons{
@@ -92,8 +100,8 @@ a{
     display: flex;
     gap: 12px;
 }
-button{
-    padding: 12px 20px;
+.padding{
+    /* padding: 12px 20px; */
 }
 .rating{
     display: flex;
@@ -112,6 +120,7 @@ button{
     border: none;
     cursor: pointer;
     transition: 0.2s ease-in;
+    padding: 10px 15px;
 }
 .work:hover{
     background-color: blue;
@@ -124,6 +133,7 @@ button{
     border: 1px solid gray;
     cursor: pointer;
     transition: 0.3s ease-in;
+    padding: 10px 15px;
 }
 .right-content{
     display: flex;
@@ -214,7 +224,7 @@ button{
     position: relative;
 }
 .top{
-    width: 100%;
+    width: 80%;
     max-width: 250px;
     height: 10px;
     background-color: orange;
@@ -555,6 +565,27 @@ button .fa-solid{
 @media (max-width: 768px){
 
     nav ul{
+        display: none;
+    }
+    #menu-btn{
+        display: block;
+        cursor: pointer;
+    }
+    nav ul.active{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: aliceblue;
+        gap: 15px;
+        padding: 10px;
+        transition: 0.2s ease;
+        
+    }
+    .icons{
         display: none;
     }
     .hero-section{
