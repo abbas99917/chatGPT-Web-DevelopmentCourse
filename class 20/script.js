@@ -1,4 +1,5 @@
-    const progressBar = document.querySelector("#scroll-progress");
+   // top scroll-bar
+   const progressBar = document.querySelector("#scroll-progress");
 
 window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY;
@@ -12,7 +13,7 @@ window.addEventListener("scroll", () => {
 });
 
 
-
+// menu icon show and hide
     let btn = document.querySelector("#menu-btn")
     const navMenu = document.getElementById("nav-menu");
     
@@ -25,6 +26,7 @@ window.addEventListener("scroll", () => {
         }
     })
 
+    // escape key press menu hide and show
     document.addEventListener("keydown",(event)=>{
             if(event.key === "Escape"){
                 navMenu.classList.remove("active")
@@ -32,8 +34,9 @@ window.addEventListener("scroll", () => {
             }
     })
   
+
+    // outside click menu close
     document.addEventListener("click",(event)=>{
-        console.log(event.target)
         if(!navMenu.contains(event.target) && !btn.contains(event.target)){
             navMenu.classList.remove("active")
               btn.textContent = "☰"

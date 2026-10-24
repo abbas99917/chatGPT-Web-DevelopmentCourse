@@ -1,0 +1,132 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    width: 100%;
+    height: 100%;
+}
+
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    background-color: whitesmoke;
+    border-bottom: 1px solid gray;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+}
+
+.navbar .list{
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+.list li a{
+    text-decoration: none;
+    text-transform: capitalize;
+    font-family: sans-serif;
+    transition: 0.2s all;
+
+}
+li a:hover{
+    color: orange;
+}
+.icons{
+    flex-direction: column;
+    gap: 5px;
+    display: none;
+   
+    
+}
+.btn{
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: orangered;
+}
+.menu{
+    width: 30px;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    display: block;
+    transition: 0.3s all;
+    
+}
+/* ================================== heroseciotns */
+
+.hero-section{
+    padding: 50px 20px;
+    text-align: center;
+    background: linear-gradient(#f1ebeb,#f9fadc);
+
+}
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.title{
+    font-family: sans-serif;
+    font-size: 4rem;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+.description{
+    text-transform: capitalize;
+    font-family: sans-serif;
+    color: gray;
+}
+.top{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.table{
+    margin-top: 10px;
+}
+.bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bottom img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    
+}
+@media (max-width: 786px){
+    .header{
+        justify-content: space-between;
+
+    }
+    .navbar .list{
+        display: none;
+    
+    }
+    .btn{
+        display: none;
+    }
+    .icons{
+        display: flex;
+    }
+    .table{
+        display: flex;
+    }
+  .title{
+    font-size: 2rem;
+  }
+
+}
