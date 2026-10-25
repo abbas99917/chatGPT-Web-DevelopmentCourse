@@ -28,3 +28,19 @@ menu.addEventListener("click",()=>{
     navbar.classList.toggle("active")
 
 })
+
+const pregressbar = document.querySelector("#progress-bar")
+
+
+
+// horizental scroll bar
+window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+
+    const scrollHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+    const scrollPercent = (scrollTop / scrollHeight) * 100;
+
+    pregressbar.style.width = scrollPercent + "%";
+});
