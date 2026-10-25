@@ -16,10 +16,14 @@ body{
     align-items: center;
     padding: 10px;
     background-color: whitesmoke;
-    border-bottom: 1px solid gray;
     position: sticky;
     top: 0;
     z-index: 999;
+    
+
+}
+.logo{
+color: #7a4a2e;
 
 }
 
@@ -56,7 +60,7 @@ li a:hover{
 .menu{
     width: 30px;
     height: 3px;
-    background-color: rgb(255, 255, 255);
+    background-color: #7a4a2e;
     display: block;
     transition: 0.3s all;
     
@@ -100,13 +104,211 @@ li a:hover{
     justify-content: center;
     align-items: center;
 }
-.bottom img{
-    max-width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 12px;
+/* ================================= second sections =======================  */
+.second-section{
+    padding: 50px 10px;
+    text-transform: capitalize;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    background-color: #F5F5F5;
+}
+
+.our-menu{
+    font-size: 12px;
+    color: blue;
+  
+}
+.delicious{
+    font-size: 2rem;
+}
+.section-heading{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     
 }
+.section-heading p{
+    color: gray;
+}
+.card-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    padding: 30px 10px;
+
+}
+.card-img{
+  
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+      
+}
+.card-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+
+  
+
+    
+}
+.card-img img:hover{
+    transform: scale(1.1);
+   
+}
+.same{
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    overflow: hidden;    
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s ease;
+   
+}
+.same:hover{
+    transform: translateY(-8px);
+}
+.content{
+    display: flex;
+    flex-direction: column;
+   text-align: start;
+   gap: 10px;
+    padding: 10px;
+}
+.name{
+    color: #7a4a2e;
+}
+.btn-price{
+    display: flex;
+    justify-content: space-between;
+}
+.class{
+    color: gray;
+    font-size: 14px;
+}
+.price{
+    font-size: 20px;
+    color: #7a4a2e;
+    font-weight: bold;
+}
+.cart{
+    padding: 10px 15px;
+    background-color: white;
+    border: 1px solid orangered;
+    color: orangered;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.2s all;
+}
+.cart:hover{
+    background-color: orangered;
+    color: white;
+   
+}
+
+
+/* ================= restourent */
+
+.restourent{
+    padding: 30px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFAF3;
+}
+.grid-contaiener{
+display: grid;
+grid-template-columns: repeat(2,1fr);
+padding: 20px 20px;
+gap: 15px;
+
+}
+.left {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.image:hover img {
+    transform: scale(1.1);
+}
+.right{
+  box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.2);
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+    background-color: white;
+    border-radius: 12px;
+    transition: 0.2s all;
+    
+}
+.right:hover{
+    transform: translateY(-8px);
+}
+.head{
+    font-family: sans-serif;
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: #7a4a2e;
+}
+.des{
+    font-family: sans-serif;
+    color: gray;
+    text-transform: capitalize;
+    font-size: 14px;
+    line-height: 1.7;
+}
+.about{
+    color: #7a4a2e;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+.stars{
+    display: flex;
+    justify-content: space-around;
+}
+.fresh{
+    text-transform: capitalize;
+    font-family: sans-serif;
+    padding: 5px ;
+    color: gray;
+    font-size: 14px;
+}
+.fa-solid{
+    font-size: 30px;
+    color: orangered;
+}
+.fa-regular{
+     font-size: 30px;
+    color: orangered;
+}
+
+/* =========================== media querry for responsive design */
 @media (max-width: 786px){
     .header{
         justify-content: space-between;
@@ -116,6 +318,19 @@ li a:hover{
         display: none;
     
     }
+    .navbar.active .list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    top: 100%;
+    position: absolute;
+    left: 0;
+    background-color: azure;
+    padding: 10px 5px;
+    justify-content: center;
+    align-items: center;
+}
+
     .btn{
         display: none;
     }
@@ -128,5 +343,71 @@ li a:hover{
   .title{
     font-size: 2rem;
   }
+  
+/* ----card-grid */
+.card-grid{
+    grid-template-columns: repeat(2,1fr);
+    row-gap: 20px;
+}
+.grid-contaiener{
+    grid-template-columns: 1fr;
+    padding: 10px 10px;
+}
 
+}
+
+@media (max-width: 680px){
+ .hero-section {
+        padding: 35px 15px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .description {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .second-section {
+        padding: 35px 10px;
+    }
+
+    .card-grid {
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        padding: 25px 0;
+        gap: 20px;
+    }
+
+    .same {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .card-img {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .content {
+        padding: 12px;
+    }
+
+    .btn-price {
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+ 
 }
