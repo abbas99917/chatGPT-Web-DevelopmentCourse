@@ -1,0 +1,183 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    width: 100%;
+    height: 100%;
+}
+
+:root{
+    --font-family:  "Poppins";
+    --span-color: orange;
+    --btn-padding: 10px;
+    --main-heading-font-size: 3rem;
+    --header-color : #fff;
+    --span-title-color: orange;
+    --btn-color: #fff;
+
+    --gap-sm : 20px;
+    --input-border-radius: 8px;
+    --gap-larg: 30px;
+    --icon-font-size: 20px;
+
+    
+}
+
+
+/* headaer */
+.header{
+    display: flex;
+    justify-content: space-evenly;
+    padding: var(--btn-padding);
+    background-color: var(--header-color);
+    /* background-color: aqua; */
+    border-bottom: 2px solid black;
+    align-items: center;
+    position: relative;
+}
+.navbar .list{
+    display: flex;
+    gap: var(--gap-larg);
+    
+}
+.list li{
+    list-style: none;
+}
+.list li a{
+    text-decoration: none;
+    text-transform: capitalize;
+    font-family: var(--font-family);
+    transition: 0.3s all;
+    color: #000;
+
+}
+.list li a:hover{
+    color: var(--span-color);
+}
+
+.logo{
+    font-family: var(--font-family);
+    text-transform: capitalize;
+}
+.color{
+    color: var(--span-color);
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    gap: var(--gap-larg);
+    transition: 0.2s all;
+
+}
+.icons .fa-solid{
+    font-size: var(--icon-font-size);
+}
+.icons .fa-solid:hover{
+    color: var(--span-color);
+    cursor: pointer;
+   
+}
+
+/* search-input */
+.search-input{
+    position: relative;
+
+}
+.search-input input{
+  
+    border-radius: 8px;
+    padding: 12px 35px;
+    border: none;
+    background-color: whitesmoke;
+    transition: 0.5s all;
+    
+}
+.search-input input:focus{
+    outline: 2px solid blue;
+    border-color: rgb(73, 159, 240);
+
+}
+.search-input .fa-brands{
+    position: absolute;
+    font-size: 25px;
+    top: 8px;
+    left: 5px;
+    cursor: pointer;
+}
+
+
+/* menu */
+.menu{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    display: none;
+    justify-content: center;
+}
+.same{
+    width: 30px;
+    height: 3px;
+    background-color: #e01818;
+    border-radius: 5px;
+    transition: 0.3s all;
+    
+}
+.circle{
+    width: 60px;
+    padding: 5px;
+    font-family: var(--font-family);
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+    text-align: center;
+    background-color: whitesmoke;
+    color: red;
+}
+
+/* responsive-code */
+
+@media (max-width: 768px){
+    .header{
+        justify-content: space-around;
+        max-width: 100%;
+
+    }
+    .navbar .list{
+        display: none;
+    }
+    .navbar.active .list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    top: 100%;
+    position: absolute;
+    left: 0;
+    background-color: #f8f7f5;
+    padding: 10px 5px;
+    justify-content: center;
+    align-items: center;
+    
+}
+    .logo{
+        font-size: 1rem ;
+    }
+    .search-input input{
+        padding: 10px 20px;
+        display: none;
+    }
+    .search-input .fa-brands{
+        display: none;
+    }
+    .menu{
+        display: flex;
+    }
+   
+}
