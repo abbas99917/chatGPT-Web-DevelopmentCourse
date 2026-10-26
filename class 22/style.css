@@ -34,8 +34,9 @@ body{
     justify-content: space-evenly;
     padding: var(--btn-padding);
     background-color: var(--header-color);
-    /* background-color: aqua; */
-    border-bottom: 2px solid black;
+    position: sticky;
+    top: 0;
+    left: 0;
     align-items: center;
     position: relative;
 }
@@ -95,7 +96,7 @@ body{
     padding: 12px 35px;
     border: none;
     background-color: whitesmoke;
-    transition: 0.5s all;
+    transition: 0.9s all;
     
 }
 .search-input input:focus{
@@ -142,6 +143,80 @@ body{
     color: red;
 }
 
+/* hero-sections============================================================================== */
+.hero-section{
+    padding: 30px 10px;
+    background-color: #f8eee3;
+}
+
+/* .border{
+    border: 1px solid black;
+} */
+.flex-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.collections{
+    color: orangered
+}
+
+.left-content{
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+    text-transform: capitalize;
+    font-family: var(--font-family);
+    padding: 20px;
+}
+.title{
+    font-size: 3.5rem;
+    color: black;
+}
+.description{
+    color: gray;
+}
+.shop-now{
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    background-color: orangered;
+    text-transform: capitalize;
+    font-family: var(--font-family);
+    align-items: center;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+
+.right-content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.ball{
+    height: 300px;
+    width: 300px;
+    background-color: #F3D2AF;
+    /* filter: blur(10px); */
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+}
+
+.right-content img{
+    height: 400px   ;
+    z-index: 999;
+   
+}
+
 /* responsive-code */
 
 @media (max-width: 768px){
@@ -178,6 +253,16 @@ body{
     }
     .menu{
         display: flex;
+    }
+
+    /* flex-container */
+    .flex-container{
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: var(--gap-larg);
+    }
+    .title{
+        font-size: 3rem;
     }
    
 }
