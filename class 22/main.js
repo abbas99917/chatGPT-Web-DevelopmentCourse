@@ -56,3 +56,65 @@ setInterval(() => {
         arrIndex = 0;
     }
 }, 3000);
+
+
+// cartproducts
+
+const productsCart = [
+    {
+        image: "https://i.pinimg.com/736x/f0/65/9b/f0659b73aaba78fad868b1b1960f574a.jpg",
+        name: "Macbook Air M3",
+        category: "Electronics",
+        description: "Powerfull laptop wit M3 chip and all-day battery life.",
+        price: 120
+    },
+    {
+        image: "https://i.pinimg.com/1200x/ad/0e/7a/ad0e7a12459c3be9a8beadf683271c85.jpg",
+        name: "AirPods Pro",
+        category: "Electronics",
+        description: "Wireless earbuds with active noise cancelassion",
+        price: 300
+    },
+    {
+        image: "https://i.pinimg.com/1200x/24/0f/c7/240fc7807b8fad426560f6630463e5e9.jpg",
+        name: "Sports Shoes",
+        category: "Clothes",
+        description: "Comfortable running sports shoes",
+        price: 200
+    },
+    {
+        image: "https://i.pinimg.com/736x/4e/dd/3a/4edd3abe57c8822dac69ddc3e25e5f2e.jpg",
+        name: "Wireless Headphone",
+        category: "Electronics",
+        description: "Hight-quality wireless headphone with noise cancellations",
+        price: 250
+    }
+]
+
+const cartContainer = document.querySelector(".cart-container")
+
+const displayCart = () =>{
+cartContainer.innerHTML = ""
+    productsCart.forEach((item)=>{
+        const cart = document.createElement("div")
+        cart.classList.add("product-cart")
+
+    cart.innerHTML  = `
+      <div class="one unique">
+            <div class="cart-image"><img src="${item.image}" alt=""></div>
+            <div class="mac">
+                <h4>${item.name}</h4>
+                <span class="category">${item.category}</span>
+            </div>
+            <p class="desc">${item.description}</p>
+            <div class="btn-price">
+                <p>$${item.price}</p>
+                <button><i class="fa-solid fa-cart-shopping"></i>add to cart</button>
+            </div>
+        </div>
+    `
+    cartContainer.appendChild(cart)
+})
+
+}
+displayCart()
