@@ -28,3 +28,31 @@ menu.addEventListener("click",()=>{
     navbar.classList.toggle("active")
 
 })  
+
+const images = [
+    {
+        image: "images/01.png"
+    },
+    {
+        image: "images/02.png"
+    },
+    {
+        image: "images/03.png"
+
+    },
+    {
+        image: "images/hero-image.png"
+    }
+]
+let arrIndex = 0;
+let heroImage = document.querySelector(".hero-image");
+
+setInterval(() => {
+    heroImage.src = images[arrIndex].image;
+
+    arrIndex++;
+
+    if (arrIndex >= images.length) {
+        arrIndex = 0;
+    }
+}, 3000);
