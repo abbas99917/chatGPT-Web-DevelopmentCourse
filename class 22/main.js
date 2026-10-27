@@ -148,8 +148,10 @@ const cartCount = (index) => {
     }
 
     count++;
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
     circle.innerHTML = `<i class="fa-solid fa-cart-shopping"></i> ${count}`;
 
-    console.log(cartItems);
+    // console.log(cartItems);
 };
+
