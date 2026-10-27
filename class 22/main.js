@@ -62,6 +62,7 @@ setInterval(() => {
 
 const productsCart = [
     {
+        id: 1,
         image: "https://i.pinimg.com/736x/f0/65/9b/f0659b73aaba78fad868b1b1960f574a.jpg",
         name: "Macbook Air M3",
         category: "Electronics",
@@ -69,6 +70,7 @@ const productsCart = [
         price: 120
     },
     {
+        id: 2,
         image: "https://i.pinimg.com/1200x/ad/0e/7a/ad0e7a12459c3be9a8beadf683271c85.jpg",
         name: "AirPods Pro",
         category: "Electronics",
@@ -76,6 +78,7 @@ const productsCart = [
         price: 300
     },
     {
+        id: 3,
         image: "https://i.pinimg.com/1200x/24/0f/c7/240fc7807b8fad426560f6630463e5e9.jpg",
         name: "Sports Shoes",
         category: "Clothes",
@@ -83,6 +86,7 @@ const productsCart = [
         price: 200
     },
     {
+         id: 4,   
         image: "https://i.pinimg.com/736x/4e/dd/3a/4edd3abe57c8822dac69ddc3e25e5f2e.jpg",
         name: "Wireless Headphone",
         category: "Electronics",
@@ -95,7 +99,7 @@ const cartContainer = document.querySelector(".cart-container")
 
 const displayCart = () =>{
 cartContainer.innerHTML = ""
-    productsCart.forEach((item)=>{
+    productsCart.forEach((item,index)=>{
         const cart = document.createElement("div")
         cart.classList.add("product-cart")
 
@@ -109,7 +113,7 @@ cartContainer.innerHTML = ""
             <p class="desc">${item.description}</p>
             <div class="btn-price">
                 <p>$${item.price}</p>
-                <button><i class="fa-solid fa-cart-shopping"></i>add to cart</button>
+                <button onclick="cartCount(${index})" ><i class="fa-solid fa-cart-shopping"></i>add to cart</button>
             </div>
         </div>
     `
@@ -118,3 +122,34 @@ cartContainer.innerHTML = ""
 
 }
 displayCart()
+
+
+// cart count
+// Cart count
+let count = 0;
+const circle = document.querySelector(".circle");
+
+let cartItems = [];
+
+const cartCount = (index) => {
+    const product = productsCart[index];
+
+    const existingProduct = cartItems.find((item) => {
+        return item.id === product.id;
+    });
+
+    if (existingProduct) {
+        existingProduct.quantity++;
+    } else {
+        cartItems.push({
+            ...product,
+            quantity: 1
+        });
+    }
+
+    count++;
+
+    circle.innerHTML = `<i class="fa-solid fa-cart-shopping"></i> ${count}`;
+
+    console.log(cartItems);
+};
