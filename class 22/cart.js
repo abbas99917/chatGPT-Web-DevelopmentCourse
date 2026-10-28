@@ -44,6 +44,4 @@ localStorage.setItem("cartItems", JSON.stringify(cartItems));
 displayAddedCart()
 }
 
-// const decreament = () =>{
-// increamentDecreament--
-// }
+
