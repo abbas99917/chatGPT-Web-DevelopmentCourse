@@ -45,3 +45,15 @@ displayAddedCart()
 }
 
 
+const decreament = (id) => {
+    const updatedArray = cartItems.find((cur) => {
+        return cur.id === Number(id);
+    });
+
+    if (updatedArray && updatedArray.quantity > 1) {
+        updatedArray.quantity--;
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        displayAddedCart();
+    }
+};
+
