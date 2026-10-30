@@ -1,3 +1,8 @@
+// cartITEM============================ 
+
+
+
+
 let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
 
@@ -18,11 +23,13 @@ cartItems.forEach((item)=>{
         <h3>${item.name}</h3>
             <p class="price">Price $${item.price}</p>
     <p class="quantity">Quantity ${item.quantity}</p>
+    <spane>${item.price * item.quantity}</spane>
     <div class="quantity-box">
         <button class="decreament" data-id="${item.id}" onclick="decreament(this.dataset.id)">-</button>
         <p class="quantity-increament">${item.quantity}</p>
         <button class="increament" data-id="${item.id}" onclick="increament(this.dataset.id)">+</button>
-    </div>
+        </div>
+        <button onclick="deletebtn(${item.id})" class="delete">Delete</button>
     </div>`
 
     container.appendChild(cart)
@@ -39,9 +46,11 @@ const updatedArray = cartItems.find((cur)=>{
 return cur.id === Number(id);
 })
 updatedArray.quantity+=1;
+
 localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
 displayAddedCart()
+updateCartCount();
 }
 
 
@@ -54,6 +63,36 @@ const decreament = (id) => {
         updatedArray.quantity--;
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
         displayAddedCart();
+        updateCartCount();
     }
 };
 
+// 
+
+
+const updateCartCount = () =>{
+    const cartCount = cartItems.reduce((total,item)=>{
+        return total + item.quantity;
+    },0)
+    document.querySelector(".circle").innerHTML =  `<i class="fa-solid fa-cart-shopping"></i> ${cartCount}`;
+}
+updateCartCount()
+
+
+const deletebtn = (id) =>{
+cartItems = cartItems.filter((cur)=>{
+    return cur.id !== Number(id)
+})
+ localStorage.setItem("cartItems", JSON.stringify(cartItems))
+ displayAddedCart()
+ updateCartCount();
+
+}
+
+
+
+// subtotal ============= 
+
+const calculateSubtotal = () => {
+    // Yahan subtotal calculate karna hai
+};  
