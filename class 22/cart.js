@@ -12,6 +12,23 @@ const displayAddedCart = () =>{
 
 container.innerHTML = ""
 
+if (cartItems.length === 0) {
+    container.innerHTML = `
+        <div class="empty-state">
+        <h2>Your Cart is Empty</h2>
+        <button class="continue-shopping">Continue Shopping</button>
+        </div>
+    `;
+
+    const homeBtn = container.querySelector(".continue-shopping");
+
+    homeBtn.addEventListener("click", () => {
+        window.location.href = "./index.html";
+    });
+
+    return;
+}
+
 cartItems.forEach((item)=>{
     const cart = document.createElement("div")
     
@@ -23,7 +40,7 @@ cartItems.forEach((item)=>{
         <h3>${item.name}</h3>
             <p class="price">Price $${item.price}</p>
     <p class="quantity">Quantity ${item.quantity}</p>
-    <spane>${item.price * item.quantity}</spane>
+    <span>$${item.price * item.quantity}</span>
     <div class="quantity-box">
         <button class="decreament" data-id="${item.id}" onclick="decreament(this.dataset.id)">-</button>
         <p class="quantity-increament">${item.quantity}</p>
@@ -39,7 +56,6 @@ cartItems.forEach((item)=>{
 }
 displayAddedCart()
 
-const increamentDecreament = document.querySelector(".quantity-increament")
 
 const increament = (id) =>{
 const updatedArray = cartItems.find((cur)=>{
@@ -51,6 +67,8 @@ localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
 displayAddedCart()
 updateCartCount();
+calculateSubtotal();
+updateTotalQuantity()
 }
 
 
@@ -64,6 +82,8 @@ const decreament = (id) => {
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
         displayAddedCart();
         updateCartCount();
+        calculateSubtotal();
+        updateTotalQuantity()
     }
 };
 
@@ -86,6 +106,8 @@ cartItems = cartItems.filter((cur)=>{
  localStorage.setItem("cartItems", JSON.stringify(cartItems))
  displayAddedCart()
  updateCartCount();
+ calculateSubtotal()
+ updateTotalQuantity()
 
 }
 
@@ -93,6 +115,56 @@ cartItems = cartItems.filter((cur)=>{
 
 // subtotal ============= 
 
+const price = document.querySelector(".total")
+const pay = document.querySelector(".pay")
+
+let subTotal = 0;
 const calculateSubtotal = () => {
-    // Yahan subtotal calculate karna hai
+    subTotal = cartItems.reduce((total,item)=>{
+  return total + (item.price * item.quantity);
+    },0)
+       
+    let DeliveryCharges = 20;
+    if(cartItems.length === 0 ){
+        DeliveryCharges = 0;
+    }else{
+        DeliveryCharges = 20;
+    }
+ 
+    price.innerHTML = `$${subTotal}`;
+    pay.innerHTML = `$${subTotal + DeliveryCharges}`;
+     updateCartCount();
+
+
+    
 };  
+calculateSubtotal()
+
+// quantity
+
+const updateTotalQuantity = () => {
+    const quantityElement = document.querySelector(".total-quantity");
+
+    const totalQuantity = cartItems.reduce((total, item) => {
+        return total + item.quantity;
+    }, 0);
+
+    quantityElement.innerText = totalQuantity;
+};
+
+updateTotalQuantity()
+
+
+// toast
+
+const showPopup = () =>{
+    const toast =document.querySelector(".toast")
+    setTimeout(()=>{
+        toast.classList.add("show")
+    },1000) 
+    setTimeout(()=>{
+    toast.classList.remove("show")
+},3000)
+
+}
+

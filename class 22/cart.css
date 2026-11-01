@@ -17,6 +17,7 @@ body {
     font-family: "Poppins", sans-serif;
     background-color: #f5f7fb;
     color: #252525;
+    position: relative;
 }
 
 /* ===== HEADER ===== */
@@ -137,8 +138,80 @@ body {
     max-width: 1200px;
     margin: 35px auto;
     padding: 0 25px;
+ 
 }
 
+.empty-state{
+    display: flex;
+    background-color: rgb(201, 197, 197);
+    border: 1px gray dashed;
+    flex-direction: column;
+    padding: 50px 30px;
+    width: 100%;
+    max-width: 800px;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    border-radius: 8px;
+    gap: 30px;
+    
+}
+.PaY{
+    padding: 10px 20px;
+    color: white;
+    background-color: blue;
+    border: none;
+    border-radius: 8px;
+    text-transform: capitalize;
+}
+
+
+/* toast-noitifiacatin start */
+.toast {
+    display: flex;
+    background-color: green;
+    width: 100%;
+    max-width: 300px;
+    padding: 5px;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    border-radius: 8px;
+
+    position: absolute;
+    right: 5px;
+    margin-top: 30px;
+
+    /* Animation */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+
+    transition: all 0.5s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+.toast .fa-brands{
+    font-size: 40px;
+   
+}
+/* toast noficications -end */
+     .continue-shopping{
+        padding: 10px;
+        background-color: orangered;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+    
+
+     }
 .cartitems {
     width: 100%;
     min-width: 0;
