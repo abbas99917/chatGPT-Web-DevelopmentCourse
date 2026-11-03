@@ -25,6 +25,15 @@ html{
     width: 100%;
     font-size: 12px;
 }
+.top{
+    position: fixed;
+    bottom: 10px;
+    padding: 10px  10px;
+    background-color: blue;
+    border: none;
+    right: 5px;
+    color: white;
+}
 
 header{
     display: flex;
@@ -78,6 +87,16 @@ color: orangered;
     gap: 5px;
     visibility: hidden;
 
+}
+
+.count{
+    background-color: red;
+    padding: 4px 20px;
+    color: white;
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+    
 }
 .same{
     width: 40px;
@@ -234,6 +253,23 @@ background-color: #edf1f1;
     justify-content: space-between;
     padding: 5px 10px;
     text-transform: capitalize;
+}
+
+
+
+
+/* ================================================== added-cart designing -========= */
+.added-cart{
+    padding: 50px;
+    display: flex;;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+   flex-direction: column;
+
 }
 
 

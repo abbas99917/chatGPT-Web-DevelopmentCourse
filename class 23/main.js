@@ -1,4 +1,4 @@
-// mobile menu open
+// main.js file
 
 const menu = document.querySelector(".menu")
 const first = document.querySelector(".first")
@@ -144,7 +144,7 @@ const displayProductsDynamically = () =>{
                     <p class="description">${item.description}</p>
                     <div class="btn-price">
                         <p class="price">$${item.price}</p>
-                        <button><i class="fa-solid fa-cart-arrow-down"></i>Add To Cart</button>
+                        <button  class="add" data-id="${item.id}"><i class="fa-solid fa-cart-arrow-down" ></i>Add To Cart</button>
                     </div>
             </div>`
 
@@ -162,3 +162,52 @@ const search = document.querySelector(".search")
 
 
 
+// product addary
+
+let cartArray = []
+console.log(cartArray)
+
+
+
+
+productContainer.addEventListener("click", (e) => {
+
+    const count = document.querySelector(".count")
+    const button = e.target.closest(".add");
+
+    if (!button) return;
+
+   let ProductID = Number(button.dataset.id)
+
+   let findProduct = productsCarts.find((item)=>{
+    return item.id === ProductID
+   })
+//dublicate cart checking
+   let existingProduct = cartArray.find((item)=>{
+
+    return item.id === ProductID
+   
+   })
+   if(existingProduct){
+    existingProduct.quantity += 1
+   }else{
+
+    let newProduct = {
+        ...findProduct,
+        quantity: 1
+    }
+    cartArray.push(newProduct)
+      
+}
+   console.log(cartArray)
+let totalCart = cartArray.length;
+   count.innerHTML = `<i class="fa-solid fa-cart-shopping"></i>${totalCart}`
+
+//    localStorage
+localStorage.setItem("addedCart",JSON.stringify(cartArray))
+});
+
+
+let getData = localStorage.getItem("addedCart",JSON.parse(cartArray))
+
+console.log(getData)
