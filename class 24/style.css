@@ -18,6 +18,64 @@ body {
     min-height: 100vh;
 }
 
+/* dark-mode toggle */
+.dark-mode {
+    background-color: #171923;
+    color: #fff;
+    transition: 0.5s all;
+}
+/* Dark Mode ==============================================*/
+
+.dark-mode {
+    background-color: #171923;
+    color: white;
+}
+
+.dark-mode .sidebar {
+    background-color: #202333;
+    border-color: #33384a;
+}
+
+.dark-mode .stat-card {
+    background-color: #202333;
+}
+
+.dark-mode .add-task-section {
+    background-color: #202333;
+}
+
+.dark-mode .tasks-section {
+    background-color: #202333;
+}
+
+.dark-mode .task-card {
+    background-color: #292e40;
+    border-color: #3b4053;
+}
+
+.dark-mode .task-info p {
+    color: #b0b4c3;
+}
+
+.dark-mode .logo h2 {
+    color: white;
+}
+
+.dark-mode .sidebar-nav a {
+    color: #d0d2dc;
+}
+
+.dark-mode .sidebar-nav a.active {
+    background-color: #6255d9;
+    color: white;
+}
+
+.dark-mode .sidebar-bottom{
+    background-color: #292e40;
+    color: #fff;
+}
+/* ============dark-mode end================ */
+
 
 /* Sidebar */
 .sidebar {
