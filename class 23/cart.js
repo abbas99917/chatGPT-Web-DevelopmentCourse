@@ -2,6 +2,14 @@
 
  let getDataFromLocal = JSON.parse(localStorage.getItem("addedCart")) || [];
 
+ // showcount
+ const showCount = () =>{
+    const count = document.querySelector(".count")
+    let totalCart = getDataFromLocal.length;
+   count.innerHTML = `<i class="fa-solid fa-cart-shopping"></i>${totalCart}`
+ }
+ showCount()
+ 
 const addedCart = document.querySelector(".added-cart")
  
 const displayAddedCart = () =>{
@@ -22,7 +30,7 @@ const displayAddedCart = () =>{
 </div>`
 
 
-addedCart.appendChild(cart)
+addedCart.append(cart)
     })
 
 }
@@ -40,11 +48,12 @@ const increament = (id) =>{
     })
 
     if(product){
-      let final =   product.quantity+= 1;
+      product.quantity+= 1;
   
         localStorage.setItem("addedCart",JSON.stringify(getDataFromLocal))
     }
 displayAddedCart()
+calculateTotalPrice()
 }
 
 
@@ -54,12 +63,13 @@ const decreament = (id) =>{
     let product = getDataFromLocal.find((item)=>{
         return item.id === id
     })
-    if(product.quantity > 1){
+    if( product && product.quantity > 1){
         product.quantity--
         localStorage.setItem("addedCart",JSON.stringify(getDataFromLocal))
 
     }
     displayAddedCart()
+    calculateTotalPrice()
 
 }
 
@@ -74,12 +84,14 @@ const removeProduct = (id) =>{
     getDataFromLocal = result
     localStorage.setItem("addedCart",JSON.stringify(result))
     displayAddedCart()
+    calculateTotalPrice()
+    showCount()
     
 }
 
 
 
-const price = document.querySelector(".price")
+const fnprice = document.querySelector(".fnprice")
 const quanty = document.querySelector(".quanty")
 const finalPrice = document.querySelector(".finalPrice")
 
@@ -93,15 +105,16 @@ const calculateTotalPrice = () =>{
 let totalQuantity = getDataFromLocal.reduce((total,item)=>{
     return total + item.quantity
 },0)
+
+
+let totalPrices = getDataFromLocal.reduce((total,item)=>{
+    return total + (item.price * item.quantity)
+},0)
+fnprice.innerText= totalPrices
 quanty.innerText = totalQuantity
 finalPrice.innerText = `$${totalPrice}`
 
-let totalPrices = getDataFromLocal.reduce((total,item)=>{
-    return total + item.price
-})
-price.innerText= totalPrices
 
-displayAddedCart()
  
 }
 calculateTotalPrice()

@@ -164,15 +164,19 @@ const search = document.querySelector(".search")
 
 // product addary
 
-let cartArray = []
-console.log(cartArray)
+let cartArray = JSON.parse(localStorage.getItem("addedCart")) || [];
 
 
-
+// show unique cart count
+const showCount = () =>{
+    const count = document.querySelector(".count")
+    let totalCart = cartArray.length;
+   count.innerHTML = `<i class="fa-solid fa-cart-shopping"></i>${totalCart}`
+}
+showCount()
 
 productContainer.addEventListener("click", (e) => {
 
-    const count = document.querySelector(".count")
     const button = e.target.closest(".add");
 
     if (!button) return;
@@ -197,17 +201,15 @@ productContainer.addEventListener("click", (e) => {
         quantity: 1
     }
     cartArray.push(newProduct)
-      
+    
 }
-   console.log(cartArray)
-let totalCart = cartArray.length;
-   count.innerHTML = `<i class="fa-solid fa-cart-shopping"></i>${totalCart}`
+showCount()
+ 
+
 
 //    localStorage
 localStorage.setItem("addedCart",JSON.stringify(cartArray))
 });
 
 
-let getData = localStorage.getItem("addedCart",JSON.parse(cartArray))
 
-console.log(getData)
