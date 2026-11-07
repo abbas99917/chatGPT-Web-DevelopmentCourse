@@ -22,57 +22,79 @@ body {
 .dark-mode {
     background-color: #171923;
     color: #fff;
-    transition: 0.5s all;
+    transition: 0.2s all;
 }
 /* Dark Mode ==============================================*/
 
 .dark-mode {
     background-color: #171923;
     color: white;
+    transition: 0.2s all;
+
 }
 
 .dark-mode .sidebar {
     background-color: #202333;
     border-color: #33384a;
+    transition: 0.2s all;
+
 }
 
 .dark-mode .stat-card {
     background-color: #202333;
+    transition: 0.2s all;
+
 }
 
 .dark-mode .add-task-section {
     background-color: #202333;
+    transition: 0.2s all;
+
 }
 
 .dark-mode .tasks-section {
     background-color: #202333;
+    transition: 0.2s all;
+
 }
 
 .dark-mode .task-card {
     background-color: #292e40;
     border-color: #3b4053;
+    transition: 0.2s all;
+
 }
 
 .dark-mode .task-info p {
     color: #b0b4c3;
+    transition: 0.2s all;
+
 }
 
 .dark-mode .logo h2 {
     color: white;
+    transition: 0.2s all;
+
 }
 
 .dark-mode .sidebar-nav a {
     color: #d0d2dc;
+    transition: 0.2s all;
+
 }
 
 .dark-mode .sidebar-nav a.active {
     background-color: #6255d9;
     color: white;
+    transition: 0.2s all;
+
 }
 
 .dark-mode .sidebar-bottom{
     background-color: #292e40;
     color: #fff;
+    transition: 0.2s all;
+
 }
 /* ============dark-mode end================ */
 
