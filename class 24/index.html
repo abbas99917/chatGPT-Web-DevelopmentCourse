@@ -80,7 +80,7 @@
                     </div>
 
                     <h3>Total Tasks</h3>
-                    <h2>12</h2>
+                    <h2 class="total">12</h2>
                 </div>
 
 
@@ -90,7 +90,7 @@
                     </div>
 
                     <h3>Pending Tasks</h3>
-                    <h2>5</h2>
+                    <h2 class="pendingTask">5</h2>
                 </div>
 
 
@@ -100,7 +100,7 @@
                     </div>
 
                     <h3>Completed Tasks</h3>
-                    <h2>7</h2>
+                    <h2 class="completedTask">7</h2>
                 </div>
 
             </section>
@@ -113,11 +113,8 @@
 
                 <div class="task-input-container">
 
-                    <input
-                        type="text"
-                        id="task-input"
-                        placeholder="Enter your task..."
-                    >
+                    <input type="text" id="task-input" placeholder="Enter your task...">
+                    <textarea id="task-description" placeholder="Enter task description..."></textarea>
 
                     <button class="add-btn">
                         <i class="fa-solid fa-plus"></i>

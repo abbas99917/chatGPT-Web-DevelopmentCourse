@@ -3,23 +3,54 @@
     const body = document.querySelector("body")
     toggle.addEventListener("click",()=>{
         body.classList.toggle("dark-mode")
-    
+
+        if (body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark")
+        } else {
+         localStorage.setItem("theme", "light")
+        }   
     })
+    
+       let savedTheme = localStorage.getItem("theme")
+
+        // Apply saved theme on page load
+        if (savedTheme === "dark") {
+        body.classList.add("dark-mode")
+        } else {
+        body.classList.remove("dark-mode")
+    }
 
 
     //   
     const addBtn = document.querySelector(".add-btn")
     const inputTask = document.querySelector("#task-input")
     const taskList = document.querySelector(".task-list")
+    const desc = document.querySelector("#task-description")
 
 
-    let tasks = [];
+
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     let editTaskId = null
 
+
+
+
+// localStorage
+    const saveTaskLocalStorage = () =>{
+        localStorage.setItem("tasks",JSON.stringify(tasks))
+    }
+    saveTaskLocalStorage()
+
+
+
+
+    // getting user values
     addBtn.addEventListener("click",()=>{
         let inputValue = inputTask.value.trim();
+        let taskDescribtions = desc.value.trim()
 
-        if(inputValue === ""){
+
+        if(inputValue === "" || taskDescribtions === ""){
         alert("fill the field first")
         return
         }
@@ -33,14 +64,18 @@
 
             if (existingTask) {
                 existingTask.title = inputValue;
+                existingTask.description = taskDescribtions
+                 saveTaskLocalStorage()
+                  updateState()
             }
 
             editTaskId = null;
             addBtn.innerText = "Add Task";
 
             renderTasks();
-            inputTask.value = "";
-
+            // inputTask.value = "";
+           
+          
             return;
         }
 
@@ -48,13 +83,17 @@
         let obj = {
             id: Date.now(),
             title: inputValue,
-            completed: false
+            completed: false,
+            description: taskDescribtions
         };
 
         tasks.push(obj);
-
+         saveTaskLocalStorage()
+         updateState()
         renderTasks();
         inputTask.value = "";
+        desc.value = "";
+        
 
 
     })
@@ -73,7 +112,7 @@
             
                             <div class="task-info">
                                 <h3>${item.title}</h3>
-                                <p>Practice frontend development.</p>
+                                <p>${item.description}</p>
                                 
                             ${item.completed? `<span class="completed-badge">Completed</span>`:`<span class="pending-badge">Pending</span>`}
                             </div>
@@ -114,6 +153,8 @@
         return  item.id !==id
     })
     renderTasks()
+     updateState()
+     saveTaskLocalStorage()
 
     })
 
@@ -137,6 +178,8 @@
 
     selectedTask.completed = true
         renderTasks()
+         updateState()
+         saveTaskLocalStorage()
     })
 
 
@@ -158,8 +201,8 @@
         if (selectTask) {
 
             inputTask.value = selectTask.title;
-
             editTaskId = selectTask.id;
+            desc.value = selectTask.description;
 
             addBtn.innerText = "Update";
         }
@@ -191,7 +234,7 @@
     filterBtn.forEach((btn)=>{
         btn.addEventListener("click",()=>{
         let filterID = btn.dataset.filter
-console.log("Filter clicked:", filterID)
+
 
         if(filterID === "all"){
             renderTasks()
@@ -212,3 +255,19 @@ console.log("Filter clicked:", filterID)
     })
 
 
+
+    //  states loigcs
+
+    const total = document.querySelector(".total")
+    const pendingTsk = document.querySelector(".pendingTask")
+    const completedTsk = document.querySelector(".completedTask")
+
+    const updateState = () =>{
+
+        total.innerText = tasks.length
+       let pending =  tasks.filter((item)=> item.completed === false)
+       pendingTsk.innerText = pending.length
+        let complet = tasks.filter((item)=> item.completed === true)
+        completedTsk.innerText = complet.length;
+    }
+updateState()
