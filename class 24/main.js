@@ -21,15 +21,17 @@
     }
 
 
-    //   
+    //   select reference
     const addBtn = document.querySelector(".add-btn")
     const inputTask = document.querySelector("#task-input")
     const taskList = document.querySelector(".task-list")
     const desc = document.querySelector("#task-description")
 
 
-
+    // localStorage
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    // state
     let editTaskId = null
 
 
@@ -67,6 +69,8 @@
                 existingTask.description = taskDescribtions
                  saveTaskLocalStorage()
                   updateState()
+                    inputTask.value = "";
+                    desc.value = "";
             }
 
             editTaskId = null;
@@ -79,7 +83,7 @@
             return;
         }
 
-    // Add new task
+    // Add new object task
         let obj = {
             id: Date.now(),
             title: inputValue,
@@ -134,7 +138,6 @@
                             </div>
 
                         `
-
                         taskList.appendChild(tasksCart)
         })
     }
@@ -184,7 +187,7 @@
 
 
 
-    // Task edit functionality start from here
+    // Task edit functionality 
 
     taskList.addEventListener("click", (e) => {
 
@@ -209,6 +212,7 @@
 
     });
 
+
     // task search-functionality
 
     const searchTask = document.querySelector(".search-task")
@@ -227,14 +231,13 @@
 
 
 
-    //
+    // filter buttons
 
     const filterBtn = document.querySelectorAll(".filter-btn ")
 
     filterBtn.forEach((btn)=>{
         btn.addEventListener("click",()=>{
         let filterID = btn.dataset.filter
-
 
         if(filterID === "all"){
             renderTasks()
@@ -271,3 +274,8 @@
         completedTsk.innerText = complet.length;
     }
 updateState()
+
+
+
+// 
+
