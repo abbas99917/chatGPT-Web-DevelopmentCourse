@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="weather-container">
+
+        <!-- Header -->
+        <header class="header">
+            <h2>🌤️ Weather App</h2>
+            <p>Check weather anywhere in the world</p>
+        </header>
+
+        <!-- Search -->
+        <section class="search-section">
+            <input
+                type="text"
+                id="city-input"
+                placeholder="Enter city name..."
+            >
+            <button class="search-btn">Search</button>
+        </section>
+
+        <!-- Current Weather -->
+        <section class="current-weather">
+
+            <div class="location">
+                <h2 class="city-name">London, UK</h2>
+                <p class="date">Monday, November 9</p>
+            </div>
+
+            <div class="weather-main">
+                <div class="weather-icon">🌤️</div>
+                <div>
+                    <h1 class="temperature">22°C</h1>
+                    <p class="weather-condition">Partly Cloudy</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Weather Details -->
+        <section class="weather-details">
+
+            <div class="detail-card">
+                <span>💧</span>
+                <h3>Humidity</h3>
+                <p class="humidity">65%</p>
+            </div>
+
+            <div class="detail-card">
+                <span>💨</span>
+                <h3>Wind Speed</h3>
+                <p class="wind-speed">12 km/h</p>
+            </div>
+
+            <div class="detail-card">
+                <span>🌡️</span>
+                <h3>Feels Like</h3>
+                <p class="feels-like">24°C</p>
+            </div>
+
+        </section>
+
+        <!-- Forecast -->
+        <section class="forecast-section">
+
+            <h2>5 Days Forecast</h2>
+
+            <div class="forecast-container">
+
+                <div class="forecast-card">
+                    <p>Tuesday</p>
+                    <span>☀️</span>
+                    <h3>25°C</h3>
+                </div>
+
+                <div class="forecast-card">
+                    <p>Wednesday</p>
+                    <span>🌧️</span>
+                    <h3>19°C</h3>
+                </div>
+
+                <div class="forecast-card">
+                    <p>Thursday</p>
+                    <span>⛅</span>
+                    <h3>23°C</h3>
+                </div>
+
+                <div class="forecast-card">
+                    <p>Friday</p>
+                    <span>☀️</span>
+                    <h3>27°C</h3>
+                </div>
+
+                <div class="forecast-card">
+                    <p>Saturday</p>
+                    <span>🌤️</span>
+                    <h3>22°C</h3>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Error Message -->
+        <p class="error-message"></p>
+
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
