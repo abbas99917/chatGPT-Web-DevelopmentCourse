@@ -10,6 +10,9 @@ body{
     width: 100%;
     height: 100%;
 }
+html{
+    scroll-behavior: smooth;
+}
 
 /* offer */
 .offer{
@@ -19,6 +22,7 @@ body{
     padding: 5px 20px;
     color: white;
     text-transform: capitalize;
+    font-size: 14px;
 }
 
 
@@ -30,9 +34,11 @@ body{
     justify-content: space-around;
     text-transform: capitalize;
     padding: 10px 5px;
-    background-color: rgb(151, 228, 202);
-    position: relative;
+    background-color: #F5F0E6;
+    position: sticky;
+    top: 0;
     align-items: center;
+    
 
 }
 .logo{
@@ -42,9 +48,7 @@ body{
     color: orangered;
     font-weight: bold;
 }
-.navbar{
-    /* position: relative; */
-}
+
 .navbar .list{
     display: flex;
     list-style: none;
@@ -79,16 +83,23 @@ body{
 
 }
 
-.second{
-    width: 20px;
-}
 .same{
     width: 40px;
     height: 4px;
-    background-color: white;
+    background-color: rgba(255, 68, 0, 0.658);
     border-radius: 4px;
     transition: 0.3s all;
     
+}
+.count{
+    background-color: red;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.count a{
+    text-decoration: none;
+    color: #fff;
 }
 
 /* hero=======================  */
@@ -99,7 +110,7 @@ body{
     align-items: center;
     padding: 50px;
     width: 100%;
-    background: linear-gradient(#bbf0ed, #e4a8f3);
+    background: linear-gradient(#caf3f1a1, #bc98c5ad);
 }
 
 .innerparent{
@@ -160,6 +171,13 @@ body{
     gap: 20px;
     text-transform: capitalize;
 }
+.flex .fa-solid{
+    background-color: rgba(255, 166, 0, 0.295);
+    padding: 10px;
+    color: rgba(255, 68, 0, 0.87);
+    font-size: 20px;
+    border-radius: 8px;
+}
 
 .text p{
     font-size: 14px;
@@ -174,6 +192,123 @@ body{
 }
 .image img{
     border-radius: 8px;
+}
+
+
+/* ======================================= products secitons */
+
+.products-section{
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sellingProducts{
+    padding: 20px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+/* cart-grid================ */
+.card-wrapper{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 40px;
+    gap: 10px;
+}
+
+/* Product Card */
+.cart-one {
+    width: 190px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: 0.3s ease;
+}
+
+.cart-one:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Image */
+.img {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.cart-one:hover .img img {
+    transform: scale(1.05);
+}
+
+/* Product Name */
+.prductName {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* Rating */
+.ratting {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    color: orange;
+    font-size: 12px;
+}
+
+.ratting p {
+    color: gray;
+    margin-left: 5px;
+}
+
+/* Price */
+.priceActual {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.original {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.fixedPricelinethrough {
+    font-size: 12px;
+    color: gray;
+    text-decoration: line-through;
+}
+
+/* Add Cart Button */
+.addCart {
+    width: 100%;
+    padding: 10px;
+    background-color: #111;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addCart:hover {
+    background-color: #444;
 }
 
 /* media-querry */
@@ -202,7 +337,7 @@ body{
         left: 0;
         z-index: 999;
         width: 100%;
-        background-color: azure;
+        background-color: #fff;
     }
     .menu{
         display: flex;
@@ -241,6 +376,10 @@ body{
 
     .flex {
         gap: 10px;
+    }
+
+    .card-wrapper{
+         grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -298,5 +437,18 @@ body{
     .image img {
         width: 100%;
         max-width: 300px;
+    }
+
+    .card-wrapper{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+        .cart-one {
+        width: 100%;
+    }
+
+    .img {
+        height: 130px;
     }
 }
