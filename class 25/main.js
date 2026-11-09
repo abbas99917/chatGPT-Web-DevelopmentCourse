@@ -24,6 +24,8 @@
     const pressure = document.querySelector(".pressure")
 
     const invalidCity = document.querySelector(".error-message")
+
+    // async functions
     const getApi = async ( cityName ) =>{
 
         
@@ -57,7 +59,7 @@
                 speed.innerText =  "--"
                 humidity.innerText =  "--"
                 pressure.innerText =  "--"
-                invalidCity.innerText = "Invalid Country/City Name"
+                invalidCity.innerText = "Invalid Country / City Name"
     }
     
 

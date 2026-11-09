@@ -1,0 +1,302 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+
+html,
+body{
+    width: 100%;
+    height: 100%;
+}
+
+/* offer */
+.offer{
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+    padding: 5px 20px;
+    color: white;
+    text-transform: capitalize;
+}
+
+
+
+/* header */
+
+.header{
+    display: flex;
+    justify-content: space-around;
+    text-transform: capitalize;
+    padding: 10px 5px;
+    background-color: rgb(151, 228, 202);
+    position: relative;
+    align-items: center;
+
+}
+.logo{
+    font-size: 1.5rem;
+}
+.orang{
+    color: orangered;
+    font-weight: bold;
+}
+.navbar{
+    /* position: relative; */
+}
+.navbar .list{
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+.navbar .list li a{
+    text-decoration: none;
+    color: black;
+    transition: 0.2s all;
+
+}
+.navbar .list li a:hover{
+    color: orangered;
+}
+
+.icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.icons .fa-solid{
+    font-size: 20px;
+}
+
+.menu{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    cursor: pointer;
+    display: none;
+
+}
+
+.second{
+    width: 20px;
+}
+.same{
+    width: 40px;
+    height: 4px;
+    background-color: white;
+    border-radius: 4px;
+    transition: 0.3s all;
+    
+}
+
+/* hero=======================  */
+
+.hero-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    width: 100%;
+    background: linear-gradient(#bbf0ed, #e4a8f3);
+}
+
+.innerparent{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F5F5F0;
+    width: 100%;
+    padding: 30px 35px;
+    border-radius: 8px;
+    
+
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.collection{
+    color: orangered;
+}
+.title{
+    text-transform: capitalize;
+    font-size: 4rem;
+}
+.desc{
+    text-transform: capitalize;
+}
+.btn{
+    display: flex;
+    gap: 10px;
+}
+.shop{
+    background-color: black;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+}
+.explore{
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.btn button{
+    padding: 10px 20px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.commitment{
+    display: flex;
+    gap: 15px;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-transform: capitalize;
+}
+
+.text p{
+    font-size: 14px;
+}
+
+.right{
+    padding: 5px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+.image img{
+    border-radius: 8px;
+}
+
+/* media-querry */
+
+@media (max-width: 768px){
+
+    .offer{
+        display: none;
+    }
+    .header{
+        justify-content: space-between;
+
+    }
+    .navbar .list{
+        display: none;
+    }
+
+    .navbar.active .list{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        text-align: start;
+        padding: 5px 30px;
+        top: 100%;
+        left: 0;
+        z-index: 999;
+        width: 100%;
+        background-color: azure;
+    }
+    .menu{
+        display: flex;
+    }
+
+}
+
+/* Tablet Responsive */
+@media (max-width: 992px) {
+
+    .hero-section {
+        padding: 30px;
+    }
+
+    .innerparent {
+        padding: 25px;
+        gap: 20px;
+    }
+
+    .title {
+        font-size: 2.8rem;
+    }
+
+    .right {
+        padding: 5px;
+    }
+
+    .image img {
+        width: 280px;
+    }
+
+    .commitment {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .flex {
+        gap: 10px;
+    }
+}
+
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+
+    .hero-section {
+        padding: 15px;
+    }
+
+    .innerparent {
+        flex-direction: column;
+        align-items: center;
+        padding: 25px 15px;
+        gap: 30px;
+    }
+
+    .left {
+        width: 100%;
+        gap: 15px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .desc {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .btn {
+        flex-wrap: wrap;
+    }
+
+    .commitment {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .flex {
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+    .right {
+        width: 100%;
+        justify-content: center;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .image img {
+        width: 100%;
+        max-width: 300px;
+    }
+}
