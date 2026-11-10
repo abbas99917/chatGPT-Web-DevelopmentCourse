@@ -36,7 +36,8 @@ const products = [
         rating: 4.5,
         reviews: 128,
         price: 129.99,
-        actualPrice: 199.99
+        actualPrice: 199.99,
+        quantity: 1
     },
     {
         id: 2,
@@ -45,7 +46,8 @@ const products = [
         rating: 4.8,
         reviews: 96,
         price: 89.99,
-        actualPrice: 129.99
+        actualPrice: 129.99,
+        quantity: 1
     },
     {
         id: 3,
@@ -54,7 +56,8 @@ const products = [
         rating: 4.6,
         reviews: 74,
         price: 59.99,
-        actualPrice: 89.99
+        actualPrice: 89.99,
+        quantity: 1
     },
     {
         id: 4,
@@ -63,7 +66,8 @@ const products = [
         rating: 4.7,
         reviews: 63,
         price: 66.99,
-        actualPrice: 119.99
+        actualPrice: 119.99,
+        quantity: 1
     },
     {
         id: 5,
@@ -72,7 +76,8 @@ const products = [
         rating: 4.5,
         reviews: 172,
         price: 699.99,
-        actualPrice: 899.99
+        actualPrice: 899.99,
+        quantity: 1
     },
     {
         id: 6,
@@ -81,7 +86,8 @@ const products = [
         rating: 4.6,
         reviews: 85,
         price: 29.99,
-        actualPrice: 49.99
+        actualPrice: 49.99,
+        quantity: 1
 }
 ];
 
@@ -119,3 +125,55 @@ products.forEach((item)=>{
 
 }
 renderProducts()
+
+  let addedCart =  JSON.parse(localStorage.getItem("shoppingCarts")) || [];
+
+
+
+
+
+wrapper.addEventListener("click",(e)=>{
+
+    let ClickedID = e.target.dataset.set
+    let idType = Number(ClickedID)
+    console.log(idType)
+
+    // find product usign find method
+
+    let proID = products.find((item)=>{
+        return item.id === idType
+    })
+
+    
+    console.log(addedCart)
+
+    // duplicate  cart chicked 
+
+    let existingProduct = addedCart.find((item)=>{
+        return item.id === proID.id
+    })
+
+    if(existingProduct){
+        existingProduct.quantity += 1
+    }else{
+        let newProduct =  {
+            ... proID,
+            quantity: 1
+        }
+        addedCart.push(newProduct)
+    }
+    // save data to localStorage
+      localStorage.setItem("shoppingCarts", JSON.stringify(addedCart))
+      
+})
+
+
+
+const showCount =  () =>{
+const count = document.querySelector(".count")
+
+count.innerText = addedCart.length;
+
+
+}
+showCount()
