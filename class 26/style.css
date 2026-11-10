@@ -432,6 +432,69 @@ html{
     background-color: #c1121f;
 }
 
+/* ======================================================== summery logics=============== */
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 25px;
+    padding: 30px;
+    align-items: start;
+}
+
+.order-summary {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 100px;
+}
+
+.order-summary h2 {
+    margin-bottom: 25px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.final-row {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 7px;
+    background: #222;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.checkout-btn:hover {
+    background: #444;
+}
+
+@media (max-width: 768px) {
+    .cart-layout {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .order-summary {
+        position: static;
+    }
+}
+
+
 
 /* ========================= */
 /* Tablet Responsive */

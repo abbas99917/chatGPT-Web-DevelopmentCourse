@@ -1,3 +1,4 @@
+// main.js files
 const menu = document.querySelector(".menu")
 const navbar = document.querySelector(".navbar")
 //======================
@@ -164,6 +165,7 @@ wrapper.addEventListener("click",(e)=>{
     }
     // save data to localStorage
       localStorage.setItem("shoppingCarts", JSON.stringify(addedCart))
+      showCount()
       
 })
 
