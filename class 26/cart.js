@@ -163,3 +163,34 @@ const finalSummery = () =>{
 
 finalSummery()
 
+console.log("Cart JS loaded");
+
+console.log("Button:", document.querySelector(".checkout-btn"));
+
+console.log("Toast:", document.querySelector(".toast"));
+
+console.log("Cart data:", loadCarts);
+
+// taosat notifications
+
+const btn = document.querySelector(".checkout-btn")
+const toast = document.querySelector(".toast")
+btn.addEventListener("click",()=>{
+
+    //     toast.style.display = "flex";
+    // console.log("Toast display:", toast.style.display);
+
+    if(loadCarts.length === 0){
+        alert("Your Cart is Empty")
+        return
+    }
+
+    setTimeout(()=>{
+        toast.style.display = "flex"
+    },1000)
+ 
+    setTimeout(() => {
+        toast.style.display = "none";
+    }, 2000);
+
+})

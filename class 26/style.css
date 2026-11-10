@@ -483,6 +483,33 @@ html{
     background: #444;
 }
 
+/* taost =========== */
+.toast{
+    display: flex;
+    background-color: green;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    position: absolute;
+    top: 460px;
+    right: 50px;
+    display: none;
+    z-index: 9999;
+    transform: translateX(30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  
+
+}
+.toast .fa-solid{
+    color: white;
+    font-size: 20px;
+
+}
+
 @media (max-width: 768px) {
     .cart-layout {
         grid-template-columns: 1fr;
