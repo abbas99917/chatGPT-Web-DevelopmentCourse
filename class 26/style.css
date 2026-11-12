@@ -110,7 +110,7 @@ html{
     align-items: center;
     padding: 50px;
     width: 100%;
-    background: linear-gradient(#caf3f1a1, #bc98c577);
+    background: linear-gradient(#caeceb88, #d2b2da77);
 }
 
 .innerparent{
@@ -497,17 +497,139 @@ html{
     position: absolute;
     top: 460px;
     right: 50px;
-    display: none;
+    opacity: 0;
     z-index: 9999;
     transform: translateX(30px);
     transition: opacity 0.4s ease, transform 0.4s ease;
   
 
 }
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
 .toast .fa-solid{
     color: white;
     font-size: 20px;
 
+}
+
+/* =================== banner-sections =====================================
+ */
+ .banner-section{
+     background: linear-gradient(to right,rgba(0, 0, 0, 0.9),transparent), url("./images/banner.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 300px;
+ }
+
+.content{
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
+    color: white;
+    gap: 10px;
+    width: 550px;
+    padding: 50px;  
+}
+
+.work-Hard{
+    font-size: 20px;
+
+}
+.boost{
+    font-size: 35px;
+}
+.btn{
+    padding: 10px 20px ;
+    width: 190px;
+    background-color: transparent;
+    border: 1px solid white;
+    cursor: pointer;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+/* ==================== timing sectiosn */
+
+.sale-section{
+    display: flex;
+       justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.countdown-container{
+    display: flex;
+    gap: 20px;
+  
+ 
+}
+.countdown-box{
+    border: 2px solid orangered;
+    background-color: rgba(255, 68, 0, 0.356);
+    padding: 5px 20px;
+    border-radius: 8px;
+    color: #fff;
+}
+.sale-btn{
+    padding:  20px;
+    background-color: orangered;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+/* ================== new arrivals sections ================== */
+
+.arrival{
+    padding: 50px;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-content: space-around;
+    gap: 10px;
+
+}
+.leftSide{
+    background-color: rgb(235, 232, 232);
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    border-radius: 8px;
+}
+.texts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 20px;
+    gap: 10px;
+    text-transform: capitalize;
+}
+.texts a{
+    text-decoration: none;
+}
+.newArrivals{
+    font-size: 30px;
+    
+}
+.image img{
+    width: 200px;
+}
+.rightSide{
+    background-color: rgb(235, 232, 232);
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    border-radius: 8px;
 }
 
 @media (max-width: 768px) {
@@ -607,6 +729,66 @@ html{
         width: 100%;
         padding: 10px;
     }
+      .banner-section {
+        min-height: 400px;
+        padding: 20px 10px;
+    }
+
+    .content {
+        padding: 10px;
+        gap: 12px;
+    }
+
+    .work-Hard {
+        font-size: 16px;
+    }
+
+    .boost {
+        font-size: 23px;
+    }
+
+    .btn {
+        width: 160px;
+    }
+
+    .sale-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .countdown-container {
+        gap: 6px;
+    }
+
+    .countdown-box {
+        padding: 8px 10px;
+        text-align: center;
+    }
+
+    .countdown-box h2 {
+        font-size: 18px;
+    }
+
+    .countdown-box span {
+        font-size: 11px;
+    }
+
+    .sale-btn {
+        padding: 12px 25px;
+    }
+    .arrival{
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+    .leftSide{
+        justify-content: center;
+        align-items: center;
+    }
+    .rightSide{
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 
@@ -640,6 +822,52 @@ html{
     }
     .menu{
         display: flex;
+    }
+     .banner-section {
+        height: auto;
+        min-height: 350px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 15px;
+        gap: 25px;
+    }
+
+    .content {
+        width: 100%;
+        padding: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .boost {
+        font-size: 28px;
+    }
+
+    .sale-section {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .countdown-container {
+        gap: 10px;
+    }
+
+    .countdown-box {
+        padding: 8px 15px;
+    }
+      .arrival{
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+    .leftSide{
+        justify-content: space-between;
+        align-items: center;
+    }
+    .rightSide{
+        justify-content: space-between;
+        align-items: center;
     }
 
 }
@@ -679,6 +907,19 @@ html{
 
     .card-wrapper{
          grid-template-columns: repeat(3, 1fr);
+    }
+         .arrival{
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+    .leftSide{
+        justify-content: space-between;
+        align-items: center;
+    }
+    .rightSide{
+        justify-content: space-between;
+        align-items: center;
     }
 }
 

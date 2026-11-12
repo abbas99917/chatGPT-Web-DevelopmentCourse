@@ -146,7 +146,7 @@ wrapper.addEventListener("click",(e)=>{
     })
 
     
-    console.log(addedCart)
+  
 
     // duplicate  cart chicked 
 
@@ -179,3 +179,56 @@ count.innerText = addedCart.length;
 
 }
 showCount()
+
+
+
+// countdown timmer 
+
+// Select HTML elements
+const countdownBoxes = document.querySelectorAll(".countdown-box");
+
+const days = countdownBoxes[0].querySelector("h2");
+const hours = countdownBoxes[1].querySelector("h2");
+const minutes = countdownBoxes[2].querySelector("h2");
+const seconds = countdownBoxes[3].querySelector("h2");
+
+// Set Sale Ending Date
+let endDate = new Date("December 1, 2026 23:59:59").getTime();
+
+// Countdown Function
+let countdown = setInterval(() => {
+
+    // Get Current Time
+    let now = new Date().getTime();
+
+    // Calculate Remaining Time
+    let distance = endDate - now;
+
+    // Calculate Days, Hours, Minutes, Seconds
+    let day = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    let hour = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    let minute = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    let second = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display Countdown
+    days.innerHTML = String(day).padStart(2, "0");
+    hours.innerHTML = String(hour).padStart(2, "0");
+    minutes.innerHTML = String(minute).padStart(2, "0");
+    seconds.innerHTML = String(second).padStart(2, "0");
+
+    // Check Sale Ending
+    if (distance <= 0) {
+
+        clearInterval(countdown);
+
+        days.innerHTML = "00";
+        hours.innerHTML = "00";
+        minutes.innerHTML = "00";
+        seconds.innerHTML = "00";
+
+    }
+
+}, 1000);

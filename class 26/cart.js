@@ -187,6 +187,7 @@ btn.addEventListener("click",()=>{
 
     setTimeout(()=>{
         toast.style.display = "flex"
+        toast.classList.add("show");
     },1000)
  
     setTimeout(() => {
