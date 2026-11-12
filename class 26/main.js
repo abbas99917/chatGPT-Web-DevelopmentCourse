@@ -107,7 +107,7 @@ products.forEach((item)=>{
 
     const cart = document.createElement("div")
     cart.innerHTML = `
-      <div class="cart-one common">
+      <div class="cart-one common" >
                  <div class="img">   <img src="${item.image}" alt=""></div>
                  <p class="prductName">${item.name}</p>
                  <div class="ratting">
@@ -237,3 +237,53 @@ let countdown = setInterval(() => {
 }, 1000);
 
 
+// scroll Reveal
+
+ScrollReveal().reveal(".cart-one", {
+    distance: "50px",
+    duration: 1000,
+    delay: 100,
+    origin: "bottom",
+    opacity: 0,
+    reset: false
+});
+ScrollReveal().reveal(".left",  {
+    distance: "50px",
+    duration: 1000,
+    delay: 100,
+    origin: "bottom",
+    opacity: 0,
+    reset: false
+});
+ScrollReveal().reveal(".leftSide",  {
+    distance: "50px",
+    duration: 1000,
+    delay: 100,
+    origin: "bottom",
+    opacity: 0,
+    reset: false
+});
+ScrollReveal().reveal(".rightSide",  {
+    distance: "50px",
+    duration: 1000,
+    delay: 100,
+    origin: "bottom",
+    opacity: 0,
+    reset: false
+});
+ScrollReveal().reveal(".countdown-box",  {
+    distance: "50px",
+    duration: 1000,
+    delay: 100,
+    origin: "bottom",
+    opacity: 0,
+    reset: false
+});
+ScrollReveal().reveal(".content",  {
+    distance: "50px",
+    duration: 1000,
+    delay: 100,
+    origin: "bottom",
+    opacity: 0,
+    reset: false
+});
