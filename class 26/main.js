@@ -25,6 +25,9 @@ menu.addEventListener("click",(e)=>{
     isOpen = !isOpen
 })
 
+// backto top
+
+// 
 
 
 // products array
@@ -232,3 +235,5 @@ let countdown = setInterval(() => {
     }
 
 }, 1000);
+
+

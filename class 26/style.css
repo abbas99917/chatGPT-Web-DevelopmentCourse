@@ -546,10 +546,9 @@ html{
     font-size: 35px;
 }
 .btn{
-    padding: 10px 20px ;
+    padding: 10px 30px ;
     width: 190px;
     background-color: transparent;
-    border: 1px solid white;
     cursor: pointer;
     color: white;
     border-radius: 8px;
@@ -600,8 +599,9 @@ html{
 
 }
 .leftSide{
-    background-color: rgb(235, 232, 232);
+    background-color: rgb(250, 249, 249);
     display: flex;
+    border: 1px solid #e0dfdf;
     justify-content: space-between;
     padding: 30px;
     border-radius: 8px;
@@ -625,13 +625,97 @@ html{
     width: 200px;
 }
 .rightSide{
-    background-color: rgb(235, 232, 232);
+    background-color: rgb(250, 249, 249);
+    border: 1px solid #e0dfdf;
     display: flex;
     justify-content: space-between;
     padding: 30px;
     border-radius: 8px;
 }
+/* ================ contact */
+.contant{
+    display: flex;
+    padding: 20px;
+    background-color: #ddd;
+}
+.message{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+.one{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.one .fa-solid{
+    font-size: 35px;
+    color: black;
+}
+.para{
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize  ;
+    font-size: 25px;
+    color: black;
+}
+.para .first{
+    font-weight: bold;
+}
+.get{
+    font-size: 13px;
+}
+.two input{
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+}
+.two button{
+    padding: 15px 30px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
 
+/* footer-sections ============================  */
+.footer{
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    color: white;
+    background-color: black;
+    flex-direction: column;
+}
+.outerDive{
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 10px;
+  padding: 50px 20px;
+}
+.simple{
+    text-transform: capitalize;
+}
+.shops{
+    font-weight: bold;
+    text-transform: capitalize;
+  
+}
+
+.top{
+    padding: 10px 10px;
+    background-color: blue;
+    color: white;
+    position: fixed;
+    bottom: 20px;
+    border-radius: 10px;
+    border: none;
+    right: 10px;
+
+}
 @media (max-width: 768px) {
     .cart-layout {
         grid-template-columns: 1fr;
@@ -641,6 +725,13 @@ html{
     .order-summary {
         position: static;
     }
+    .outerDive{
+        grid-template-columns: repeat(2,1fr);
+
+    }
+ 
+   
+
 }
 
 
@@ -789,6 +880,47 @@ html{
         justify-content: center;
         align-items: center;
     }
+     .contant {
+        padding: 25px 15px;
+    }
+
+    .message {
+        gap: 20px;
+    }
+
+    .one {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .one .fa-solid {
+        font-size: 30px;
+    }
+
+    .para {
+        font-size: 19px;
+    }
+
+    .get {
+        font-size: 12px;
+    }
+
+    .two {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .two input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .two button {
+        width: 100%;
+        padding: 13px;
+    }
+
 }
 
 
@@ -868,6 +1000,30 @@ html{
     .rightSide{
         justify-content: space-between;
         align-items: center;
+    }
+     .message {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .one {
+        gap: 15px;
+    }
+
+    .para {
+        font-size: 22px;
+    }
+
+    .two {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .two input {
+        width: 60%;
     }
 
 }
