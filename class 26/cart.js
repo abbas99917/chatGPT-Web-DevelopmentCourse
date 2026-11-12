@@ -45,7 +45,10 @@ const renderCarts = () =>{
 
 parentDiv.innerHTML = ""
 
+
 loadCarts.forEach((item)=>{
+
+   
 
     const creatCart = document.createElement("div")
 
@@ -155,7 +158,7 @@ const finalSummery = () =>{
     let delivery = loadCarts.length === 0 ? 0 : 200;
     shipping.innerText = `Rs.${delivery}`
     subtotal.innerText  = `Rs ${subTotalPrice.toFixed()}`
-    grandTotal.innerText = `Rs${subTotalPrice + delivery}`
+    grandTotal.innerText = `Rs ${(subTotalPrice + delivery).toFixed(0)}`
     
 
 
@@ -163,13 +166,7 @@ const finalSummery = () =>{
 
 finalSummery()
 
-console.log("Cart JS loaded");
 
-console.log("Button:", document.querySelector(".checkout-btn"));
-
-console.log("Toast:", document.querySelector(".toast"));
-
-console.log("Cart data:", loadCarts);
 
 // taosat notifications
 
