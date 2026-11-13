@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart page</title>
+    <link rel="stylesheet" href="style.css">
+
+
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- fonts-links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body>
+    
+
+        <header class="header">
+        <div class="ShopLogo">
+            <i class="fa-solid fa-shop"></i>
+            <h1 class="logo">Shop<span class="kart">Kart</span></h1>
+        </div>
+
+        <!-- navbar -->
+         <nav class="navbar">
+            <ul class="list">
+                <li><a href="#home">home</a></li>
+                <li><a href="#shop">shop</a></li>
+                <li><a href="#about">about</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
+         </nav>
+
+         <!-- icon-secton -->
+          <div class="icon">
+            <div class="inpusearch">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="search Products" id="searchProduct">
+            </div>
+            <a href="#admin.html"><i class="fa-solid fa-user"></i></a>
+            <span><a href="#cart.html"  class="cartCount" style="text-decoration: none;">0</a></span>
+          </div>
+
+          <!-- menu -->
+           <div class="menu">
+            <span class="first common"></span>
+            <span class="second common" style="width: 30px;"></span>
+            <span class="third common"></span>
+           </div>
+    </header>
+
+
+   
+<section class="cart-wrapper">
+
+    <div class="cart-heading">
+        <div>
+            <h1>Shopping Cart</h1>
+            <p>Manage your selected products</p>
+        </div>
+
+        <a href="index.html" class="continue-shopping">
+            <i class="fa-solid fa-arrow-left"></i>
+            Continue Shopping
+        </a>
+    </div>
+
+    <div class="cart-layout">
+
+        <!-- Cart Products -->
+        <div class="cart-products">
+
+            <div class="cart-top">
+                <h2>Your Products</h2>
+                <span class="total-items">0 Items</span>
+            </div>
+
+            <!-- JavaScript Products -->
+            <div class="cart-box">
+
+                <!-- Each product will render here -->
+
+            </div>
+
+            <!-- Empty Cart -->
+            <div class="empty-cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <h2>Your Cart is Empty</h2>
+                <p>You haven't added any products yet.</p>
+                <a href="index.html">Start Shopping</a>
+            </div>
+
+        </div>
+
+        <!-- Order Summary -->
+        <div class="summary-box">
+
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Total Items</span>
+                <span class="total-count"></span>
+            </div>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span class="subtotal"> </span>
+            </div>
+
+            <div class="summary-row">
+                <span>Shipping</span>
+                <span class="shipping"></span>
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="summary-row grand-row">
+                <strong>Grand Total</strong>
+                <strong class="grand-total"></strong>
+            </div>
+
+            <!-- <button class="checkout-btn">
+                Proceed to Checkout
+                <i class="fa-solid fa-arrow-right"></i>
+            </button> -->
+            <a href="./checkedOut/checkedOut.html" target="_blank" class="checkout-btn" style="text-align: center; text-decoration: none; ">
+            Proceed to Checkout
+            <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <p class="secure-text">
+                <i class="fa-solid fa-lock"></i>
+                Secure Checkout
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="cart.js"></script>
+
+</body>
+</html>

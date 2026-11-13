@@ -84,17 +84,71 @@ const products = [
         reviews: 85,
         price: 2999,
         actualPrice: 4999
-    }
+    },
+    {
+        id: 7,
+        name: "Classic Cotton T-Shirt",
+        image: "./productsImages/cotton.jfif",
+        rating: 4.6,
+        reviews: 85,
+        price: 2999,
+        actualPrice: 4999
+    },
+    {
+        id: 8,
+        name: "Classic Cotton T-Shirt",
+        image: "./productsImages/cotton.jfif",
+        rating: 4.6,
+        reviews: 85,
+        price: 2999,
+        actualPrice: 4999
+    },
+    {
+        id: 9,
+        name: "Classic Cotton T-Shirt",
+        image: "./productsImages/cotton.jfif",
+        rating: 4.6,
+        reviews: 85,
+        price: 2999,
+        actualPrice: 4999
+    },
+    {
+        id: 10,
+        name: "Classic Cotton T-Shirt",
+        image: "./productsImages/cotton.jfif",
+        rating: 4.6,
+        reviews: 85,
+        price: 2999,
+        actualPrice: 4999
+    },
+    {
+        id: 11,
+        name: "Classic Cotton T-Shirt",
+        image: "./productsImages/cotton.jfif",
+        rating: 4.6,
+        reviews: 85,
+        price: 2999,
+        actualPrice: 4999
+    },
+    {
+        id: 12,
+        name: "Classic Cotton T-Shirt",
+        image: "./productsImages/cotton.jfif",
+        rating: 4.6,
+        reviews: 85,
+        price: 2999,
+        actualPrice: 4999
+    },
 ];
 
 
 // dynamic product rendering
 
 const productContainer = document.querySelector(".products-container")
-const renderProducts = () =>{
+const renderProducts = (prd = products) =>{
 productContainer.innerHTML = ""
 
-products.forEach((item)=>{
+prd.forEach((item)=>{
     const cart = document.createElement("div")
 
     cart.innerHTML = `<div class="product-card">
@@ -109,7 +163,7 @@ products.forEach((item)=>{
 
   
     <div class="product-details">
-        <h3 class="product-name">${item.name}</h3>
+        <h3 class="product-name">Rs{item.name}</h3>
         <div class="rating">
             <i class="fa-solid fa-star"></i>
             <span>${item.rating}</span>
@@ -181,5 +235,18 @@ productContainer.addEventListener("click",(e)=>{
 
     localStorage.setItem("newCarts",JSON.stringify(cartArray))
     showCount()
-    
+
 })
+
+//search logic flow
+
+    const searchProducts = document.querySelector("#searchProduct")
+
+    searchProducts.addEventListener("input",()=>{
+        let userValue = searchProducts.value.trim().toLowerCase()
+
+        let loadproduct = products.filter((item)=>{
+            return item.name.toLowerCase().includes(userValue)
+        })
+        renderProducts(loadproduct)
+    })
