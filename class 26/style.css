@@ -59,6 +59,7 @@ html{
     display: flex;
     list-style: none;
     gap: 40px;
+    
 }
 .navbar .list li a{
     text-decoration: none;
@@ -342,7 +343,7 @@ html{
 .cart-parent {
     width: 100%;
     max-width: 1100px;
-    margin: auto;
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -451,6 +452,7 @@ html{
 /* ======================================================== summery logics=============== */
 
 .cart-layout {
+   
     display: grid;
     grid-template-columns: 1fr 320px;
     gap: 25px;
