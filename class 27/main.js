@@ -167,7 +167,7 @@ prd.forEach((item)=>{
         <div class="rating">
             <i class="fa-solid fa-star"></i>
             <span>${item.rating}</span>
-            <small>(129 Reviews)</small>
+            <small>(${item.reviews})</small>
         </div>
 
        
@@ -214,9 +214,6 @@ productContainer.addEventListener("click",(e)=>{
     let findCart = products.find((item)=>{
         return item.id === btnID
     })
-
-   
-    console.log(cartArray)
 
     // dublicate checked
 
