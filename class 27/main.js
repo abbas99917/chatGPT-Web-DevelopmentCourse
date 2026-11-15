@@ -84,61 +84,8 @@ const products = [
         reviews: 85,
         price: 2999,
         actualPrice: 4999
-    },
-    {
-        id: 7,
-        name: "Classic Cotton T-Shirt",
-        image: "./productsImages/cotton.jfif",
-        rating: 4.6,
-        reviews: 85,
-        price: 2999,
-        actualPrice: 4999
-    },
-    {
-        id: 8,
-        name: "Classic Cotton T-Shirt",
-        image: "./productsImages/cotton.jfif",
-        rating: 4.6,
-        reviews: 85,
-        price: 2999,
-        actualPrice: 4999
-    },
-    {
-        id: 9,
-        name: "Classic Cotton T-Shirt",
-        image: "./productsImages/cotton.jfif",
-        rating: 4.6,
-        reviews: 85,
-        price: 2999,
-        actualPrice: 4999
-    },
-    {
-        id: 10,
-        name: "Classic Cotton T-Shirt",
-        image: "./productsImages/cotton.jfif",
-        rating: 4.6,
-        reviews: 85,
-        price: 2999,
-        actualPrice: 4999
-    },
-    {
-        id: 11,
-        name: "Classic Cotton T-Shirt",
-        image: "./productsImages/cotton.jfif",
-        rating: 4.6,
-        reviews: 85,
-        price: 2999,
-        actualPrice: 4999
-    },
-    {
-        id: 12,
-        name: "Classic Cotton T-Shirt",
-        image: "./productsImages/cotton.jfif",
-        rating: 4.6,
-        reviews: 85,
-        price: 2999,
-        actualPrice: 4999
-    },
+    }
+   
 ];
 
 

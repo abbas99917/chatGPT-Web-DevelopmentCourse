@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <h2>ShopAdmin</h2>
+            </div>
+
+            <p class="menu-title">MAIN MENU</p>
+
+            <nav class="sidebar-menu">
+
+                <a href="#" class="active" data-page="dashboard">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Dashboard
+                </a>
+
+                <a href="#" data-page="products">
+                    <i class="fa-solid fa-box"></i>
+                    Products
+                </a>
+
+                <a href="#" data-page="orders">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Orders
+                </a>
+
+                <a href="#" data-page="customers">
+                    <i class="fa-solid fa-users"></i>
+                    Customers
+                </a>
+
+                <a href="#" data-page="analytics">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Analytics
+                </a>
+
+            </nav>
+
+            <p class="menu-title">OTHER</p>
+
+            <nav class="sidebar-menu">
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <i class="fa-solid fa-circle-user"></i>
+                <div>
+                    <h4>Admin User</h4>
+                    <p>Muhammad Abbas</p>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+
+                <div class="page-heading">
+                    <h1 class="dynamicHeading">Dashboard</h1>
+                    <p>Welcome back! Here's what's happening today.</p>
+                </div>
+
+                <div class="navbar-right">
+
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search here...">
+                    </div>
+
+                    <div class="notification">
+                        <i class="fa-regular fa-bell"></i>
+                        <span></span>
+                    </div>
+
+                    <div class="admin-profile">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <div>
+                            <h4>Admin</h4>
+                            <p>Muhammad Abbas</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+        <section class="dashboard-page active" id="dashboard">
+                <!-- Statistics Cards -->
+            <section class="stats-section">
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <p>Total Sales</p>
+                        <h2>$24,500</h2>
+                        <span class="positive">+12.5% this month</span>
+                    </div>
+                    <div class="stat-icon sales-icon">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <p>Total Orders</p>
+                        <h2>1,250</h2>
+                        <span class="positive">+8.2% this month</span>
+                    </div>
+                    <div class="stat-icon orders-icon">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <p>Total Products</p>
+                        <h2>350</h2>
+                        <span>Available products</span>
+                    </div>
+                    <div class="stat-icon products-icon">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <p>Total Customers</p>
+                        <h2>890</h2>
+                        <span class="positive">+5.4% this month</span>
+                    </div>
+                    <div class="stat-icon customers-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Sales Overview -->
+            <section class="sales-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Sales Overview</h2>
+                        <p>Your sales performance</p>
+                    </div>
+
+                    <select>
+                        <option>Last 7 Days</option>
+                        <option>Last 30 Days</option>
+                        <option>Last 12 Months</option>
+                    </select>
+                </div>
+
+                <div class="chart-placeholder">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <p>Sales chart will be added here</p>
+                </div>
+
+            </section>
+
+            <!-- Recent Orders -->
+            <section class="orders-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Recent Orders</h2>
+                        <p>Latest customer orders</p>
+                    </div>
+
+                    <a href="#">View All</a>
+                </div>
+
+                <div class="table-container">
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>#ORD-001</td>
+                                <td>Ali Khan</td>
+                                <td>15 Nov 2026</td>
+                                <td>$250</td>
+                                <td><span class="status delivered">Delivered</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>#ORD-002</td>
+                                <td>Ahmed</td>
+                                <td>14 Nov 2026</td>
+                                <td>$180</td>
+                                <td><span class="status pending">Pending</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>#ORD-003</td>
+                                <td>Usman</td>
+                                <td>13 Nov 2026</td>
+                                <td>$320</td>
+                                <td><span class="status cancelled">Cancelled</span></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </section>
+        </section>
+
+        <section class="dashboard-page" id="products">
+             <h2>Products Management</h2>
+
+            <div class="products-container"></div>
+            </section>
+            <img src="" alt="">
+
+        <section class="dashboard-page" id="orders">
+         <h2>Orders Page</h2>
+        </section>
+
+        <section class="dashboard-page" id="customers">
+        <h2>Customers Page</h2>
+        </section>
+
+        <section class="dashboard-page" id="analytics">
+        <h2>Analytics Page</h2>
+        </section>
+
+    </main>
+
+    </div>
+    <!-- Edit Product Modal -->
+
+<div class="modal-overlay" id="editModal">
+
+    <div class="modal-container">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <div>
+                <h2>Edit Product</h2>
+                <p>Update your product information</p>
+            </div>
+
+            <button class="close-modal" id="closeModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Modal Form -->
+        <form id="editProductForm">
+
+            <div class="form-group">
+                <label for="editName">Product Name</label>
+                <input type="text" id="editName">
+            </div>
+
+            <div class="form-group">
+                <label for="editImage">Product Image</label>
+                <input type="text" id="editImage">
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="editRating">Rating</label>
+                    <input type="number" id="editRating" step="0.1">
+                </div>
+
+                <div class="form-group">
+                    <label for="editReviews">Reviews</label>
+                    <input type="number" id="editReviews">
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="editPrice">Current Price</label>
+                    <input type="number" id="editPrice">
+                </div>
+
+                <div class="form-group">
+                    <label for="editActualPrice">Actual Price</label>
+                    <input type="number" id="editActualPrice">
+                </div>
+
+            </div>
+
+            <!-- Modal Actions -->
+            <div class="modal-actions">
+
+                <button type="button" class="cancel-btn">
+                    Cancel
+                </button>
+
+                <button type="submit" class="save-btn">
+                    <i class="fa-solid fa-check"></i>
+                    Save Changes
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+<script src="dashboard.js"></script>
+</body>
+</html>

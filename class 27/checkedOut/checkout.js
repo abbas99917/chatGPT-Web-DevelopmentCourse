@@ -67,7 +67,7 @@ const receiveValues = () =>{
     let customerPostalCode = postalCode.value;
     let customerNotes = notes.value;
 
-
+// store form values in objects
     let customerDetails = {
         name: customerName,
         email: customerEmail,
@@ -111,7 +111,8 @@ placeBtn.addEventListener("click",()=>{
   if( formValidation()){
       receiveValues()
 
-     window.location.href = "conformation.html"
+      sessionStorage.setItem("orderSuccess", "true");
+      window.location.href = "conformation.html"
       
   }
 
@@ -119,7 +120,11 @@ placeBtn.addEventListener("click",()=>{
 
 // steps 03
 let readProducts = JSON.parse(localStorage.getItem("newCarts")) || [];
-// console.log(readProducts)
+
+
+
+
+
 
 
 // subtotal loigcs
