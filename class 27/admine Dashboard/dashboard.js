@@ -102,10 +102,10 @@ const productContainer  = document.querySelector(".products-container")
 let products = JSON.parse(localStorage.getItem("admineCart")) || originalProducts;
 
 
-const renderProducts = () =>{
+const renderProducts = (item = products) =>{
     productContainer.innerHTML = ""
 
-products.forEach((item)=>{
+item.forEach((item)=>{
     const product = document.createElement("div")
     product.classList.add("product-card")
 
@@ -153,17 +153,25 @@ const editModal = document.querySelector("#editModal");
 const closeModal = document.querySelector("#closeModal");
 const cancelBtn = document.querySelector(".cancel-btn");
 
+let currentEditId = null;
 productContainer.addEventListener("click", (e) => {
 
     // EDIT
     let editBtn = e.target.closest(".edit-product");
-
+    
     if (editBtn) {
         let findId = Number(editBtn.dataset.id);
+        currentEditId = findId;
 
         let findProduct = products.find((item) => {
             return item.id === findId;
         });
+        editName.value = findProduct.name;
+        editImage.value = findProduct.image;
+        editRating.value = findProduct.rating;
+        editReviews.value = findProduct.reviews;
+        editPrice.value = findProduct.price;
+        editActualPrice.value = findProduct.actualPrice;
 
         console.log(findProduct);
 
@@ -188,3 +196,137 @@ productContainer.addEventListener("click", (e) => {
 
 });
 
+const editProductForm = document.querySelector("#editProductForm");
+
+
+editProductForm.addEventListener("submit",(e)=>{
+    e.preventDefault()
+
+    updatedName  = editName.value;
+    updatedImage = editImage.value
+    updatedRating = Number(editRating.value)
+    updatedReviews = Number(editReviews.value)
+    updatedPrice = Number(editPrice.value)
+    updatedActuallPrice = Number(editActualPrice.value)
+
+
+
+  products =  products.map((item)=>{
+        if(item.id === currentEditId){
+            return{
+                ...item,
+                name: updatedName,
+                image: updatedImage,
+                rating: updatedRating,
+                reviews: updatedReviews,
+                price: updatedPrice,
+                actualPrice: updatedActuallPrice
+            }
+        }
+        return item
+    })
+    localStorage.setItem("admineCart",JSON.stringify(products))
+    renderProducts()
+    editModal.classList.remove("show")
+
+    editProductForm.reset()
+    currentEditId = null
+
+
+})
+
+
+
+// products search
+
+const search = document.querySelector(".search")
+search.addEventListener("input",()=>{
+    searchProducts()
+})
+
+const searchProducts = () =>{
+let searchValue = search.value.trim().toLowerCase();
+ let   findSearch = products.filter((item)=>{
+        return item.name.toLowerCase().includes(searchValue)
+    })
+    renderProducts(findSearch)
+}
+
+
+// add new product to the arrray
+
+const addProductBtn = document.querySelector(".add-product-btn");
+const addModal = document.querySelector("#addModal");
+const closeAddModal = document.querySelector("#closeAddModal");
+const cancelAdd = document.querySelector("#cancelAdd");
+
+// const parent = document.querySelector(".modal-overlay")
+
+addProductBtn.addEventListener("click",()=>{
+    openPopup()
+})
+
+const openPopup = () =>{
+    addModal.classList.add("show")
+}
+addModal.addEventListener("click", (e) => {
+
+    if (
+        e.target.closest("#closeAddModal") ||
+        e.target.closest("#cancelAdd")
+    ) {
+        addModal.classList.remove("show");
+    }
+
+    if (e.target === addModal) {
+        addModal.classList.remove("show");
+    }
+   
+
+});
+
+
+// add product fonrm selectors
+
+const addProductForm = document.querySelector("#addProductForm");
+
+const addName = document.querySelector("#addName");
+const addImage = document.querySelector("#addImage");
+const addRating = document.querySelector("#addRating");
+const addReviews = document.querySelector("#addReviews");
+const addPrice = document.querySelector("#addPrice");
+const addActualPrice = document.querySelector("#addActualPrice");
+
+
+const addNewProduct = () =>{
+
+    let proName = addName.value;
+    let proImage = addImage.value;
+    let proRating = addRating.value;
+    let proReviews = addReviews.value
+    let proPrice = addPrice.value;
+    let proActualPrice = addActualPrice.value;
+
+
+    let newProducts = {
+        id: Date.now(),
+        name: proName,
+        image: proImage,
+        rating: Number(proRating),
+        reviews: Number(proReviews),
+        price: Number(proPrice),
+        actualPrice: Number(proActualPrice)
+    }
+
+    products.push(newProducts)
+    localStorage.setItem("admineCart",JSON.stringify(products))
+    renderProducts()
+    
+
+}
+addProductForm.addEventListener("submit",(e)=>{
+    e.preventDefault()
+    addNewProduct()
+    addProductForm.reset()
+    addModal.classList.remove("show")
+})

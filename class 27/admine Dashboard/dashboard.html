@@ -93,7 +93,7 @@
 
                     <div class="search-box">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="Search here...">
+                        <input type="text" placeholder="Search here..." class="search">
                     </div>
 
                     <div class="notification">
@@ -247,12 +247,21 @@
             </section>
         </section>
 
-        <section class="dashboard-page" id="products">
-             <h2>Products Management</h2>
+     <section class="dashboard-page" id="products">
 
-            <div class="products-container"></div>
-            </section>
-            <img src="" alt="">
+    <div class="products-header">
+        <h2>Products Management</h2>
+
+        <button class="add-product-btn">
+            <i class="fa-solid fa-plus"></i>
+            Add New Product
+        </button>
+    </div>
+
+    <div class="products-container"></div>
+
+</section>
+            
 
         <section class="dashboard-page" id="orders">
          <h2>Orders Page</h2>
@@ -287,7 +296,7 @@
             </button>
         </div>
 
-        <!-- Modal Form -->
+        <!-- Modal Form popup ===============================-->
         <form id="editProductForm">
 
             <div class="form-group">
@@ -346,6 +355,71 @@
 
     </div>
 
+</div>
+
+<!-- newproductadded popup -->
+ <div class="modal-overlay" id="addModal">
+    <div class="modal-container">
+
+        <div class="modal-header">
+            <div>
+                <h2>Add New Product</h2>
+                <p>Enter your product information</p>
+            </div>
+
+            <button class="close-modal" id="closeAddModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <form id="addProductForm">
+
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" id="addName" required>
+            </div>
+
+            <div class="form-group">
+                <label>Product Image</label>
+                <input type="text" id="addImage" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Rating</label>
+                    <input type="number" id="addRating" step="0.1" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Reviews</label>
+                    <input type="number" id="addReviews" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Current Price</label>
+                    <input type="number" id="addPrice" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Actual Price</label>
+                    <input type="number" id="addActualPrice" required>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="cancel-btn" id="cancelAdd">
+                    Cancel
+                </button>
+
+                <button type="submit" class="save-btn">
+                    <i class="fa-solid fa-plus"></i> Add Product
+                </button>
+            </div>
+
+        </form>
+    </div>
 </div>
 <script src="dashboard.js"></script>
 </body>

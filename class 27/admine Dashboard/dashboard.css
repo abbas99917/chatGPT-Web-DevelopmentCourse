@@ -451,6 +451,40 @@ body {
     display: flex;
     gap: 15px;
 }
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.add-product-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-product-btn i {
+    font-size: 14px;
+}
+
+.add-product-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(37, 99, 235, 0.25);
+}
+
+.add-product-btn:active {
+    transform: translateY(0);
+}
 
 /* Buttons */
 
@@ -792,6 +826,16 @@ td {
     }
         .products-container {
         grid-template-columns: 1fr;
+    }
+        .products-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .add-product-btn {
+        width: 100%;
+        justify-content: center;
     }
 
 }
