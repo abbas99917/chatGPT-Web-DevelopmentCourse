@@ -80,6 +80,7 @@ const receiveValues = () =>{
   
     // steps 05
     let orderDetails = {
+        id:      Date.now(),
         customer: customerDetails,
         products: readProducts,
         subtotal: summery.subtotal,

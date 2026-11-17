@@ -1,4 +1,10 @@
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 100
+  });
 //
+
 const menu = document.querySelector(".menu")
 const first = document.querySelector(".first")
 const second  = document.querySelector(".second")
@@ -98,7 +104,7 @@ productContainer.innerHTML = ""
 prd.forEach((item)=>{
     const cart = document.createElement("div")
 
-    cart.innerHTML = `<div class="product-card">
+    cart.innerHTML = `<div class="product-card" data-aos="fade-up">
 
    
     <div class="product-image">
@@ -110,7 +116,7 @@ prd.forEach((item)=>{
 
   
     <div class="product-details">
-        <h3 class="product-name">Rs{item.name}</h3>
+        <h3 class="product-name">Rs${item.name}</h3>
         <div class="rating">
             <i class="fa-solid fa-star"></i>
             <span>${item.rating}</span>
@@ -131,7 +137,9 @@ prd.forEach((item)=>{
 </div>`
 
 productContainer.appendChild(cart)
+
 })
+
 
 }
 renderProducts()
@@ -194,3 +202,78 @@ productContainer.addEventListener("click",(e)=>{
         })
         renderProducts(loadproduct)
     })
+
+
+    // reviews functionalityes
+
+
+    const reviewsContainer = document.querySelector(".reviews-container")
+    const reviewsCard = document.querySelectorAll(".review-card")
+    const reveiwPre = document.querySelector(".review-prev")
+    const reviewNext = document.querySelector(".review-next")
+    const reviewBtn = document.querySelectorAll(".review-dot")
+
+
+    let currentIndex = 0
+
+const showReviews = () => {
+
+    let cardWidth = reviewsCard[0].offsetWidth;
+    let gap = 25;
+
+    reviewsContainer.style.transform =
+        `translateX(-${currentIndex * (cardWidth + gap)}px)`;
+
+    reviewBtn.forEach((item, index) => {
+        if (index === currentIndex) {
+            item.classList.add("active");
+        } else {
+            item.classList.remove("active");
+        }
+    });
+
+};
+
+showReviews();
+
+
+//  next button
+ reviewNext.addEventListener("click",()=>{
+        currentIndex++
+
+
+   if(currentIndex >= reviewsCard.length){
+        currentIndex = 0
+    }
+    showReviews()
+ })
+
+
+ // previous button
+ reveiwPre.addEventListener("click",()=>{
+
+    currentIndex --;
+    if(currentIndex < 0 ){
+       currentIndex = reviewsCard.length -1
+    }
+    showReviews()
+ })
+
+    
+
+ // dots paginations
+ reviewBtn.forEach((item,index)=>{
+    item.addEventListener("click",()=>{
+        currentIndex = index;
+        showReviews()
+    })
+
+ })
+
+
+
+
+
+
+
+ 
