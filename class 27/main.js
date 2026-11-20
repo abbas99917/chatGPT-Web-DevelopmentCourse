@@ -221,8 +221,7 @@ const showReviews = () => {
     let cardWidth = reviewsCard[0].offsetWidth;
     let gap = 25;
 
-    reviewsContainer.style.transform =
-        `translateX(-${currentIndex * (cardWidth + gap)}px)`;
+    reviewsContainer.style.transform = `translateX(-${currentIndex * (cardWidth + gap)}px)`;
 
     reviewBtn.forEach((item, index) => {
         if (index === currentIndex) {

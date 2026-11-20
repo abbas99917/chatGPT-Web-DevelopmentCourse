@@ -22,10 +22,19 @@
        <h2>Admin Panel</h2>
 
     <nav class="sidebar-nav">
-        <a href="#" data-page="Dashboard">Dashboard</a>
-        <a href="#" data-page="Products">Products</a>
-        <a href="#" data-page="Orders">Orders</a>
-        <a href="#" data-page="Customers">Customers</a>
+        <a href="#" data-page="dashboard">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>Dashboard</span></a>
+        <a href="#" data-page="products">
+              <i class="fa-solid fa-box"></i>
+              <span>Products</span>
+        </a> 
+        <a href="#" data-page="orders">
+            <i class="fa-solid fa-cart-shopping"></i>
+          <span>Orders</span></a>
+        <a href="#" data-page="customers">
+            <i class="fa-solid fa-users"></i>
+          <span>Customers</span></a>
     </nav>
 
     </section>
@@ -34,18 +43,111 @@
 
         <section class="navbar">
             <!-- Navbar content -->
+  
         </section>
 
         <section class="main-content">
 
             <!-- dashboard -->
           <section class="dashboard-page" id="dashboard">
-            <h1>dashboard overview</h1>
+            <h1 class="heading">dashboard overview</h1>
+            <div class="stats-container">
+              <div class="totalProducts">
+                <i class="fa-solid fa-store"></i>
+                <div>
+                  <p class="stats-number">120</p>
+                <p>Products in store</p>
+                </div>
+              </div>
+              <div class="totalOrders">
+               <i class="fa-solid fa-cart-arrow-down"></i>
+                <div>
+                  <p class="orders">81</p>
+                  <p>order recieve</p>
+                </div>
+              </div>
+              <div class="totalCustomer">
+             <i class="fa-solid fa-user-group"></i>
+                <div>
+                  <p class="customers">60</p>
+                <p>Registered Customers</p>
+                </div>
+              </div>
+              <div class="totalRevenue">
+            <i class="fa-solid fa-money-bill-trend-up"></i>
+              <div>
+                  <p>Total revenue</p>
+                <p class="sale">RS. 50K</p>
+                <P class="small-text">total sale</P>
+              </div>
+              </div>
+            </div>
           </section>
 
           <!-- products overviews -->
           <section class="dashboard-page" id="products">
-            <h1>products overview</h1>
+            <h1 class="heading">Products Management</h1>
+           <div class="search-section">
+            <input type="search" name="search" id="searchProduct" placeholder="Search Products...">
+             <button class="addProductBtn">Add Product</button>
+           </div>
+
+
+
+           <!-- form continer -->
+          <div class="modal-overlay" id="editModel">
+              <form>
+              <div>
+                <label for="productName">Product Name</label>
+                <input type="text" placeholder="Product Name" name="productName" id="product">
+              </div>
+              <div>
+                <label for="category">Category</label>
+                <input type="text" placeholder="Category Name" name="category" id="category">
+              </div>
+              <div>
+                <label for="selling">Selling Price</label>
+                <input type="number" placeholder="Selling Price" name="selling" id="selling">
+              </div>
+              <div>
+                <label for="stock">Stock</label>
+                <input type="number" placeholder="stock" name="stock" id="stock">
+              </div>
+             <input type="button" value="Update Product">
+
+            </form> 
+          </div>
+           <!-- table -->
+           <table class="border">
+    <thead>
+        <tr>
+            <th class="common">Image</th>
+            <th class="common">Id</th>
+            <th class="common">Product Name</th>
+            <th class="common">Category</th>
+            <th class="common">Rating</th>
+            <th class="common">Actuall Price</th>
+            <th class="common">Selling Price</th>
+            <th class="common">Stock</th>
+            <th class="common">Action</th>
+        </tr>
+    </thead>
+
+    <tbody class="products-table-body">
+        <!-- <tr>
+          <td>🤣</td>
+          <td>1</td>
+          <td>watch</td>
+          <td>electronic</td>
+          <td>4.5</td>
+          <td>1999</td>
+          <td>999</td>
+          <td>12</td>
+        </tr> -->
+    </tbody>
+</table>
+
+
           </section>
 
           <!-- order overview -->
@@ -64,5 +166,6 @@
     </div>
 </main>
 
+<script src="script.js"></script>
 </body>
 </html>

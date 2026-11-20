@@ -30,6 +30,17 @@
     align-items: center;
     justify-content: space-between;
 }
+.sidebar-nav a.active {
+    background-color: #3b82f6;
+    color: white;
+    border-left: 4px solid #ffffff;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+.sidebar-nav a i {
+    width: 25px;
+    margin-right: 8px;
+}
 
 .main-content{
 
@@ -61,4 +72,265 @@
 }
 #dashboard{
     display: block;
+}
+.heading{
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+/* stats contrainers */
+.stats-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    text-transform: capitalize;
+}
+
+.totalProducts,
+.totalOrders,
+.totalCustomer,
+.totalRevenue {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.totalProducts .fa-solid,
+.totalOrders .fa-solid,
+.totalCustomer .fa-solid,
+.totalRevenue .fa-solid {
+      background-color: rgba(0, 0, 255, 0.205);
+    font-size: 20px;
+    padding: 10px;
+    color: darkblue;
+    border-radius: 5px; 
+}
+.stats-number,
+.orders,
+.customers,
+.sale{
+     color: green;
+    font-size: 20px; 
+}
+
+.small-text{
+    font-size: 12px;
+    background-color: rgba(0, 0, 255, 0.192);
+    color: darkblue;
+    padding: 4px;
+    border-radius:15px;
+    text-align: center;
+}
+
+
+/* product management system deisng */
+.products{
+    display: flex;
+}
+.addProductBtn{
+    padding: 10px 20px;
+    background-color: rgb(62, 62, 221);
+    color: white;
+    border: none;
+    cursor: pointer;
+
+}
+.search-section{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+#searchProduct{
+    padding: 5px 10px;
+    background-color: rgba(219, 216, 216, 0.712);
+    border: none;
+}
+
+/* tables======= */
+.border{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+
+    
+}
+th,
+td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+}
+.common{
+    background-color: gray;
+    padding: 12px;
+    text-align: left;
+}
+.same{
+    padding: 12px;
+    vertical-align: middle;
+}
+tbody tr:nth-child(even){
+    background-color: lightgray;
+    text-align: center;
+}
+.proimg {
+    display: block;
+    margin: auto;
+    object-fit: contain;
+}
+td:last-child {
+    white-space: nowrap;
+}
+.edit{
+    background-color: rgba(0, 0, 255, 0.308);
+    color: darkblue;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    
+}
+.delete{
+    background-color: rgba(255, 0, 0, 0.308);
+    padding: 8px 12px;
+    color: darkred;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+/* ====================================== form */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay form {
+    width: 90%;
+    max-width: 450px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    margin: 0;
+}
+form {
+    max-width: 500px;
+    background-color: #ffffff;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+form label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+}
+
+form input:focus {
+    border-color: #3b82f6;
+}
+
+form input[type="button"] {
+    background-color: #3b82f6;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+
+form input[type="button"]:hover {
+    background-color: #2563eb;
+}
+/* sidebar responsive code start form here */
+@media (max-width: 524px) {
+
+    .wrapper {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        width: 70px;
+        padding: 15px 8px;
+        transition: 0.3s ease;
+        overflow: hidden;
+    }
+
+    .sidebar h2 {
+        display: none;
+    }
+
+    .sidebar-nav a {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        padding: 12px;
+    }
+
+    .sidebar-nav a i {
+        min-width: 25px;
+        margin-right: 0;
+    }
+
+    .sidebar-nav a span {
+        display: none;
+    }
+
+    /* Expanded Sidebar */
+
+    .sidebar.open {
+        width: 200px;
+    }
+
+    .sidebar.open h2 {
+        display: block;
+    }
+
+    .sidebar.open .sidebar-nav a span {
+        display: inline;
+    }
+
+    .sidebar.open .sidebar-nav a i {
+        margin-right: 8px;
+    }
+
+    .right-content {
+        min-width: 0;
+    }
+
+    .navbar {
+        height: 60px;
+        padding: 12px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
 }
