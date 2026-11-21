@@ -148,127 +148,504 @@
     border: none;
 }
 
-/* tables======= */
-.border{
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fff;
-   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 
-    
+/* product contaier */
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
-th,
-td {
-    text-align: center;
-    vertical-align: middle;
-    padding: 12px;
+
+.product-card {
+    padding: 15px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
-.common{
-    background-color: gray;
-    padding: 12px;
-    text-align: left;
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
-.same{
-    padding: 12px;
-    vertical-align: middle;
-}
-tbody tr:nth-child(even){
-    background-color: lightgray;
-    text-align: center;
-}
-.proimg {
-    display: block;
-    margin: auto;
+
+.product-card img {
+    width: 100%;
+    height: 160px;
     object-fit: contain;
 }
-td:last-child {
-    white-space: nowrap;
+.name1category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0;
 }
-.edit{
-    background-color: rgba(0, 0, 255, 0.308);
-    color: darkblue;
-    padding: 8px 12px;
+
+.proName {
+    font-size: 16px;
+    font-weight: bold;
+    color: #172554;
+}
+
+.category {
+    font-size: 12px;
+    color: #64748b;
+}
+.review {
+    color: orange;
+}
+
+.reviews {
+    display: inline-block;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.prices {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.price {
+    font-size: 17px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.line-through {
+    font-size: 13px;
+    color: #94a3b8;
+    text-decoration: line-through;
+}
+
+
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+     gap: 10px;
+}
+.flex .edit{
+    background-color: rgba(1, 250, 1, 0.342);
+    color: darkgreen;
+    padding: 5px 20px;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
-    
 }
-.delete{
-    background-color: rgba(255, 0, 0, 0.308);
-    padding: 8px 12px;
+.flex .delete{
+    background-color: rgba(255, 0, 0, 0.26);
     color: darkred;
-    border-radius: 8px;
+      padding: 5px 20px;
     border: none;
     cursor: pointer;
 }
 
-/* ====================================== form */
-.modal-overlay {
+/* ==========editmodel */
+.edit-modal-content {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    font-size: 22px;
+    color: #172554;
+}
+
+.close-modal {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #334155;
+}
+
+.form-group input {
+    padding: 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+}
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+.save-btn {
+    background-color: #2563eb;
+    color: white;
+}
+.edit-modal {
+    display: none;
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
-    display: none;
     justify-content: center;
     align-items: center;
+    padding: 20px;
     z-index: 1000;
+    transition: 0.3s all;
 }
 
-.modal-overlay form {
-    width: 90%;
-    max-width: 450px;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-    margin: 0;
+/* new product form */
+
+/* Add Product Modal */
+.add-product-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-form {
+
+.add-product-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Popup Box */
+.add-product-content {
+    width: 100%;
     max-width: 500px;
-    background-color: #ffffff;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
     padding: 25px;
-    margin: 25px 0;
-    border-radius: 10px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+
+    transform: translateY(30px) scale(0.95);
+    transition: transform 0.3s ease;
 }
 
-form div {
+.add-product-modal.active .add-product-content {
+    transform: translateY(0) scale(1);
+}
+
+/* Modal Header */
+.add-product-content .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-product-content .modal-header h2 {
+    font-size: 22px;
+    color: #222;
+}
+
+.close-add-modal {
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+}
+
+/* Form */
+.add-product-form .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 18px;
+    gap: 7px;
+    margin-bottom: 15px;
 }
 
-form label {
+.add-product-form label {
     font-size: 14px;
-    font-weight: 600;
-    color: #333;
+    font-weight: 500;
 }
 
-form input {
+.add-product-form input {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    outline: none;
+    font-family: inherit;
+}
+
+.add-product-form input:focus {
+    border-color: #4f46e5;
+}
+
+.add-product-btn {
     width: 100%;
     padding: 12px;
+    border: none;
+    border-radius: 7px;
+    background: #4f46e5;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.add-product-btn:hover {
+    background: #3730a3;
+}
+/* -============= customers ordrs */
+
+/* Orders Section */
+#orders {
+    width: 100%;
+    padding: 20px;
+}
+
+/* Search and Navigation */
+#orders .navigate-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 25px 0;
+}
+
+/* Search Input */
+#orders .input {
+    flex: 1;
+    min-width: 220px;
+}
+
+#orders .input input {
+    width: 100%;
+    padding: 12px 16px;
     border: 1px solid #d1d5db;
-    border-radius: 6px;
+    border-radius: 8px;
     outline: none;
     font-size: 14px;
-}
-
-form input:focus {
-    border-color: #3b82f6;
-}
-
-form input[type="button"] {
-    background-color: #3b82f6;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
     transition: 0.3s;
 }
 
-form input[type="button"]:hover {
-    background-color: #2563eb;
+#orders .input input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
+
+/* Filter Buttons */
+#orders .buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#orders .buttons button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+/* Individual Buttons */
+#orders .all {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+#orders .processing {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+#orders .shipped {
+    background: #ede9fe;
+    color: #6d28d9;
+}
+
+#orders .pending {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+#orders .cancelled {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* Button Hover */
+#orders .buttons button:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.95);
+}
+
+/* Table Responsive Wrapper */
+#orders .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 10px;
+}
+
+/* Orders Table */
+#orders table {
+    width: 100%;
+    min-width: 750px;
+    border-collapse: collapse;
+    background: white;
+    border: none;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Table Heading */
+#orders thead {
+    background: #263449;
+    color: white;
+}
+
+#orders th {
+    padding: 16px 14px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Table Data */
+#orders td {
+    padding: 14px;
+    font-size: 14px;
+    color: #475569;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+/* Alternate Rows */
+#orders tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+#orders tbody tr:nth-child(odd) {
+    background: white;
+}
+
+/* First Column */
+#orders td:nth-child(1) {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+/* Total Column */
+#orders td:nth-child(5) {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+/* Row Hover */
+#orders tbody tr:hover {
+    background: #eff6ff;
+}
+
+/* Status Dropdown */
+#orders select {
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: white;
+    outline: none;
+    cursor: pointer;
+}
+
+#orders select:focus {
+    border-color: #2563eb;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    #orders .navigate-link {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    #orders .buttons {
+        justify-content: flex-start;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    #orders {
+        padding: 12px;
+    }
+
+    #orders .buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    #orders .buttons button {
+        width: 100%;
+        padding: 11px 8px;
+    }
+
+    #orders .input {
+        width: 100%;
+    }
+
+    #orders th,
+    #orders td {
+        padding: 12px 10px;
+        font-size: 12px;
+    }
+}
+
 /* sidebar responsive code start form here */
 @media (max-width: 524px) {
 
@@ -333,4 +710,13 @@ form input[type="button"]:hover {
     .main-content {
         padding: 15px;
     }
+    .search-section{
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 20px;
+    }
+      .products-container {
+        grid-template-columns: 1fr;
+    }
+
 }

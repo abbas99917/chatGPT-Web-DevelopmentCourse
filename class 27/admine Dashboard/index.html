@@ -48,7 +48,10 @@
 
         <section class="main-content">
 
-            <!-- dashboard -->
+        
+           
+
+            <!--  main-dashboard -->
           <section class="dashboard-page" id="dashboard">
             <h1 class="heading">dashboard overview</h1>
             <div class="stats-container">
@@ -82,6 +85,8 @@
               </div>
               </div>
             </div>
+
+            
           </section>
 
           <!-- products overviews -->
@@ -94,65 +99,162 @@
 
 
 
-           <!-- form continer -->
-          <div class="modal-overlay" id="editModel">
-              <form>
-              <div>
-                <label for="productName">Product Name</label>
-                <input type="text" placeholder="Product Name" name="productName" id="product">
-              </div>
-              <div>
-                <label for="category">Category</label>
-                <input type="text" placeholder="Category Name" name="category" id="category">
-              </div>
-              <div>
-                <label for="selling">Selling Price</label>
-                <input type="number" placeholder="Selling Price" name="selling" id="selling">
-              </div>
-              <div>
-                <label for="stock">Stock</label>
-                <input type="number" placeholder="stock" name="stock" id="stock">
-              </div>
-             <input type="button" value="Update Product">
 
-            </form> 
-          </div>
-           <!-- table -->
-           <table class="border">
-    <thead>
-        <tr>
-            <th class="common">Image</th>
-            <th class="common">Id</th>
-            <th class="common">Product Name</th>
-            <th class="common">Category</th>
-            <th class="common">Rating</th>
-            <th class="common">Actuall Price</th>
-            <th class="common">Selling Price</th>
-            <th class="common">Stock</th>
-            <th class="common">Action</th>
-        </tr>
-    </thead>
 
-    <tbody class="products-table-body">
-        <!-- <tr>
-          <td>🤣</td>
-          <td>1</td>
-          <td>watch</td>
-          <td>electronic</td>
-          <td>4.5</td>
-          <td>1999</td>
-          <td>999</td>
-          <td>12</td>
-        </tr> -->
-    </tbody>
-</table>
+   
+           <!-- product-Container -->
+      <div class="products-container"><!-- dynamic cart render here --></div>
 
+        <div class="edit-modal" id="editModel">
+
+    <div class="edit-modal-content">
+
+        <div class="modal-header">
+            <h2>Edit Product</h2>
+            <button class="close-modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <form id="editForm">
+
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" id="editName" placeholder="Enter product name">
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <input type="text" id="editCategory" placeholder="Enter category">
+            </div>
+
+            <div class="form-group">
+                <label>Selling Price</label>
+                <input type="number" id="editPrice" placeholder="Enter selling price">
+            </div>
+
+            <div class="form-group">
+                <label>Actual Price</label>
+                <input type="number" id="editActualPrice" placeholder="Enter actual price">
+            </div>
+
+            <div class="form-group">
+                <label>Stock</label>
+                <input type="number" id="editStock" placeholder="Enter stock">
+            </div>
+
+            <div class="modal-buttons">
+                <button type="button" class="cancel-btn">Cancel</button>
+                <button type="submit" class="save-btn">Save Changes</button>
+            </div>
+
+        </form>
+    </div>
+        </div>
+<div class="add-product-modal" id="addProductModal">
+
+    <div class="add-product-content">
+
+        <div class="modal-header">
+            <h2>Add New Product</h2>
+
+            <button type="button" class="close-add-modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="add-product-form">
+
+
+
+    <form id="addProductForm">
+
+        <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" id="productName" placeholder="Enter product name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Product Image URL</label>
+            <input type="url" id="productImage" placeholder="Enter image URL" required>
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+            <input type="text" id="productCategory" placeholder="Enter category" required>
+        </div>
+
+        <div class="form-group">
+            <label>Rating</label>
+            <input type="number" id="productRating" placeholder="e.g. 4.5" min="0" max="5" step="0.1" required>
+        </div>
+
+        <div class="form-group">
+            <label>Reviews</label>
+            <input type="number" id="productReviews" placeholder="Enter reviews" min="0" required>
+        </div>
+
+        <div class="form-group">
+            <label>Selling Price</label>
+            <input type="number" id="productPrice" placeholder="Enter selling price" min="0" required>
+        </div>
+
+        <div class="form-group">
+            <label>Actual Price</label>
+            <input type="number" id="productActualPrice" placeholder="Enter actual price" min="0" required>
+        </div>
+
+        <button type="submit" class="add-product-btn">
+            Add Product
+        </button>
+
+    </form>
+
+</div>
+
+    </div>
+
+</div>
 
           </section>
 
           <!-- order overview -->
           <section class="dashboard-page" id="orders">
-            <h1>orders overview</h1>
+            <h1>Orders Management</h1>
+            <p>Tract and manage customers orders</p>
+
+            <div class="navigate-link">
+               <div class="input">
+                 <input type="search" id="search" placeholder="search customers...">
+               </div>
+               <div class="buttons">
+                <button data-page="all" id="all" class="all">All</button>
+                <button data-page="process" id="process" class="processing">Processing</button>
+                <button data-page="shipped" id="ship" class="shipped">Shipped</button>
+                <button data-page="pending" id="pending" class="pending">Pending</button>
+                <button data-page="cancele" id="cancelled" class="cancelled">Cancelled</button>
+               </div>
+
+            </div>
+
+          <div class="table-wrapper">
+              <table border="">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Product Name</th>
+                        <th>Status</th>
+                        <th>Total</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="orders-tbody">
+
+                </tbody>
+            </table>
+          </div>
           </section>
 
             <!-- customers overview  -->
@@ -160,11 +262,18 @@
             <h1>Customers overview</h1>
           </section>
 
+
+
         
         </section>
 
+
     </div>
+
+    
 </main>
+
+
 
 <script src="script.js"></script>
 </body>

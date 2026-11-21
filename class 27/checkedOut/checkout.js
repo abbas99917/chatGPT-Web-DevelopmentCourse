@@ -85,7 +85,9 @@ const receiveValues = () =>{
         products: readProducts,
         subtotal: summery.subtotal,
         shipping: summery.shipping,
-        grandTotal: summery.grandTotal
+        grandTotal: summery.grandTotal,
+        status: "Pending",
+        date: new Date().toLocaleDateString(),
         
     }
    
