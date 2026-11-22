@@ -5,6 +5,23 @@ const productsContainer = document.querySelector(".products-container")
 const searchProduct = document.querySelector("#searchProduct")
 
 
+// toggle them
+
+
+const themeBtn = document.querySelector(".ligt-dark");
+const themeIcon = themeBtn.querySelector("i");
+
+themeBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        themeIcon.classList.replace("fa-sun", "fa-moon");
+    } else {
+        themeIcon.classList.replace("fa-moon", "fa-sun");
+    }
+
+});
 
 
 sidebar.forEach((item)=>{
@@ -13,7 +30,7 @@ sidebar.forEach((item)=>{
     
     let pageName = item.getAttribute("data-page")
 
-    console.log(pageName)
+
 
     dashboardPage.forEach((page)=>{
         page.style.display = "none";
@@ -130,20 +147,24 @@ let originalProducts = [
   }
 ];
 
-// localStorage.setItem("storeProducts",JSON.stringify(products))
+
 
 let products = JSON.parse(localStorage.getItem("storeProducts")) || originalProducts;
 
 
 
-const updateDashboard = () =>{
-statsNumber.textContent = products.length;
-orders.textContent = dashboardData.totalOrders;
-customers.textContent = dashboardData.totalCustomers;
-sale.textContent = `Rs ${dashboardData.totalRevenue}`;
+const updateDashboard = () => {
+    statsNumber.textContent = products.length;
+    orders.textContent = customerOrders.length;
 
+    customers.textContent = new Set(
+        customerOrders.map(item => item.customer.email)
+    ).size;
 
-}
+    sale.textContent = `Rs ${customerOrders.reduce(
+        (total, item) => total + Number(item.grandTotal), 0
+    ).toLocaleString()}`;
+};
 
 let dashboardData  = {
   totalProducts,
@@ -153,7 +174,7 @@ let dashboardData  = {
 }
 
 
-updateDashboard()
+
 
 
 const dynamicProducts = (singlProducts = products) =>{
@@ -209,7 +230,7 @@ productsContainer.addEventListener("click",(e)=>{
   let toNumber = Number(find.dataset.id)
 
   products = products.filter((item)=>{
-return item.id !==toNumber
+  return item.id !==toNumber
   })
   dynamicProducts()
   localStorage.setItem("storeProducts",JSON.stringify(products))
@@ -306,6 +327,8 @@ editModel.addEventListener("click",(e)=>{
   const addProductBtn  = document.querySelector(".addProductBtn")
   const closeAddModal = document.querySelector(".close-add-modal");
 
+  
+
   const search = document.querySelector("#search")
 
   // open model popup
@@ -359,11 +382,19 @@ editModel.addEventListener("click",(e)=>{
   // customers detailes
 const ordersTbody = document.querySelector(".orders-tbody");
   let customerOrders  = JSON.parse(localStorage.getItem("customerOrders")) || [];
-
+updateDashboard()
 
 const showOrders = (searchPro = customerOrders) =>{
   ordersTbody.innerHTML = ""
 
+  if(searchPro.length === 0){
+   ordersTbody.innerHTML = `
+            <tr>
+              <td colspan="7">No Orders Found</td>
+            </tr>
+`;
+return
+  }
     searchPro.forEach((item)=>{
       const row = document.createElement("tr")
 
@@ -375,12 +406,13 @@ const showOrders = (searchPro = customerOrders) =>{
       <td>${item.grandTotal}</td>
       <td>${item.date}</td>
       <td><select data-id="${item.id}">
-      <option  ${item.status === "Pending" ? "selected" : ""}>Pending</option>
-      <option  ${item.status === "Processing" ? "selected" : ""}>Processing</option>
-      <option  ${item.status === "Shipped" ? "selected" : ""}>Shipped</option>
-      <option  ${item.status === "Delivered" ? "selected" : ""}>Delivered</option>
-      <option  ${item.status === "Cancelled" ? "selected" : ""}>Cancelled</option>
-      </select></td>
+      <option ${item.status === "Pending" ? "selected" : ""}>Pending</option>
+      <option ${item.status === "Processing" ? "selected" : ""}>Processing</option>
+      <option ${item.status === "Shipped" ? "selected" : ""}>Shipped</option>
+      <option ${item.status === "Delivered" ? "selected" : ""}>Delivered</option>
+      <option ${item.status === "Cancelled" ? "selected" : ""}>Cancelled</option>
+      </select> <button class="view" data-id="${item.id}">View-Order</button>
+      <button class="delete-order" data-id="${item.id}">delete</button></td>
       
       `
 
@@ -409,4 +441,429 @@ search.addEventListener("input",()=>{
     return item.customer.name.toLowerCase().includes(userValue)
   })
   showOrders(findPro)
+})
+
+  const button = document.querySelector(".buttons")
+ 
+
+button.addEventListener("click",(e)=>{
+  let status = e.target.dataset.page
+  if(status === "all"){
+    showOrders()
+  }else if(status === "process"){
+    let filterArr = customerOrders.filter((item)=>{
+      return item.status === "Processing"
+    })
+    showOrders(filterArr)
+   
+  }else if(status === "shipped"){
+    let filterArr = customerOrders.filter((item)=>{
+      return item.status === "Shipped"
+    })
+    showOrders(filterArr)
+  }else if(status === "pending"){
+    let filteArr = customerOrders.filter((item)=>{
+      return item.status === "Pending"
+    })
+    showOrders(filteArr)
+  }else if(status === "cancel"){
+     let filteArr = customerOrders.filter((item)=>{
+      return item.status === "Cancelled"
+    })
+    showOrders(filteArr)
+  }
+
+})
+
+const orderModal = document.querySelector("#orderModal");
+const closeOrder = document.querySelector(".close-order");
+const orderDetails = document.querySelector(".order-details");
+const exportPdf = document.querySelector(".export-pdf")
+
+ordersTbody.addEventListener("click",(e)=>{
+  let findbtn = e.target.closest(".view")
+  if(!findbtn)return 
+  let dataID = Number(findbtn.dataset.id)
+
+let existing=customerOrders.find((item)=>{
+    return item.id === dataID
+  })
+
+if (existing) {
+
+  let productHTML = existing.products.map((product) => {
+    return `
+     <div class="product-item">
+      <p>Product: ${product.name}</p>
+      <p>Quantity: ${product.quantity}</p>
+      <p>Price: ${product.price}</p>
+     </div>
+    `;
+  }).join("");
+
+
+orderDetails.innerHTML = `
+  <div class="order-info">
+    <h3>Order #${existing.id}</h3>
+
+    <div class="customer-info">
+      <h4>Customer Information</h4>
+      <p><span>Customer:</span> ${existing.customer.name}</p>
+      <p><span>Email:</span> ${existing.customer.email}</p>
+      <p><span>Phone:</span> ${existing.customer.phone}</p>
+      <p><span>Address:</span> ${existing.customer.address}</p>
+      <p><span>City:</span> ${existing.customer.city}</p>
+    </div>
+
+    <div class="products-info">
+      <h4>Ordered Products</h4>
+      ${productHTML}
+    </div>
+    <div class="payment-summary">
+    <h2>Payment Summery</h2>
+    <p>Subtotal:  ${existing.subtotal}</p>
+    <p>Shipping:  ${existing.shipping}</p>
+    <p>Grand Total:  ${existing.grandTotal}</p>
+    </div>
+    <div class="order-status">
+    <h3>Order Information</h3>
+    <p>Status: ${existing.status}</p>
+    <p>Order Date: ${existing.date || "Not Available"}</p>
+    </div>
+  </div>
+`;
+
+
+  orderModal.classList.add("active");
+}
+
+})
+
+// close details popup
+closeOrder.addEventListener("click", () => {
+  
+  orderModal.classList.remove("active");
+});
+
+// delete order
+
+ordersTbody.addEventListener("click",(e)=>{
+  let findId = e.target.closest(".delete-order")
+
+  if(!findId)return
+let ask = confirm("Are you sure you want to delete this order?");
+
+if (!ask) return;
+
+  let change = Number(findId.dataset.id)
+
+ customerOrders =  customerOrders.filter((item)=>{
+    return item.id !==change
+  })
+  localStorage.setItem("customerOrders",JSON.stringify(customerOrders))
+  showOrders()
+  updateDashboard()
+})
+
+
+// export pdf code 
+
+// Export Orders to PDF
+
+exportPdf.addEventListener("click", () => {
+
+    const { jsPDF } = window.jspdf;
+
+    const doc = new jsPDF();
+
+    doc.setFontSize(18);
+    doc.text("Customer Orders", 20, 20);
+
+    doc.setFontSize(11);
+
+    customerOrders.forEach((item, index) => {
+
+        let y = 40 + (index * 40);
+
+        doc.text(`Order ID: ${item.id}`, 20, y);
+        doc.text(`Customer Name: ${item.customer.name}`, 20, y + 10);
+        doc.text(`Status: ${item.status}`, 20, y + 20);
+        doc.text(`Grand Total: ${item.grandTotal}`, 20, y + 30);
+
+    });
+
+    doc.save("customer-orders.pdf");
+
+});
+
+// logout
+
+const logoutBtn = document.querySelector("#logoutBtn")
+
+logoutBtn.addEventListener("click",(e)=>{
+  e.preventDefault()
+
+  window.location.href = "./login.html"
+
+})
+
+
+// recent order
+const tableBody = document.querySelector(".table-body")
+
+
+const showRecentOrders = () =>{
+  tableBody.innerHTML = ""
+
+  customerOrders.forEach((item)=>{
+
+    const tableRow = document.createElement("tr")
+
+    tableRow.innerHTML = `
+    <td>${item.id}</td>
+    <td>${item.customer.name}</td>
+    <td>${item.date}</td>
+    <td>${item.grandTotal}</td>
+    <td> <span class="status-badge ${item.status.toLowerCase()}">${item.status}
+    </span>
+    </td>
+    `
+
+    tableBody.appendChild(tableRow)
+  })
+}
+showRecentOrders()
+
+
+// customers
+
+const tbody = document.querySelector(".customers-tbody");
+const customerCount = document.querySelector(".total-Customer")
+
+
+const showCustomers = () => {
+    tbody.innerHTML = "";
+
+    let uniqueCustomers = [];
+
+    // Unique customers find karo
+    customerOrders.forEach((item) => {
+        const existingCustomer = uniqueCustomers.find(
+            (customer) => customer.customer.email === item.customer.email
+        );
+
+        if (!existingCustomer) {
+          uniqueCustomers.push(item);
+        }
+    });
+
+    // Customers table render karo
+    uniqueCustomers.forEach((item, index) => {
+
+        // Total orders
+        const totalOrders = customerOrders.filter(
+            order => order.customer.email === item.customer.email
+        ).length;
+
+        // Total spending
+        const totalSpending = customerOrders
+            .filter(order => order.customer.email === item.customer.email)
+            .reduce((total, order) => total + Number(order.grandTotal), 0);
+
+        const tableRow = document.createElement("tr");
+
+        tableRow.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${item.customer.name}</td>
+            <td>${item.customer.email}</td>
+            <td>${totalOrders}</td>
+            <td>Rs ${totalSpending.toLocaleString()}</td>
+        `;
+
+        tbody.appendChild(tableRow);
+      });
+      customerCount.textContent = uniqueCustomers.length;
+
+};
+
+showCustomers();
+
+
+// sale charts
+const saleChart = document.querySelector("#salesChart")
+const salesFilter = document.querySelector("#salesFilter");
+
+
+const months = ["Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"];
+const labels = months;
+
+
+
+const getMonthlySales = () => {
+    const monthlySales = new Array(12).fill(0);
+
+    customerOrders.forEach((item) => {
+     const [month, day, year] = item.date.split("/").map(Number);
+        const monthIndex = month - 1;
+
+        monthlySales[monthIndex] += Number(item.grandTotal);
+    });
+    
+
+    return monthlySales;
+};
+
+const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const getWeeklySales = () => {
+    const weeklySales = new Array(7).fill(0);
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const lastSevenDays = new Date(today);
+    lastSevenDays.setDate(today.getDate() - 6);
+
+    customerOrders.forEach((item) => {
+     const [month, day, year] = item.date.split("/").map(Number);
+
+        const orderDate = new Date(year, month - 1, day);
+
+        if (orderDate >= lastSevenDays && orderDate <= today) {
+            const dayIndex = Math.floor(
+                (orderDate - lastSevenDays) / (1000 * 60 * 60 * 24)
+            );
+
+            weeklySales[dayIndex] += Number(item.grandTotal);
+        }
+    });
+
+    return weeklySales;
+};
+
+const getYearlySales = () => {
+    const currentYear = new Date().getFullYear();
+
+    const years = [];
+    const yearlySales = [];
+
+    for (let i = 4; i >= 0; i--) {
+        years.push(currentYear - i);
+        yearlySales.push(0);
+    }
+
+    customerOrders.forEach((item) => {
+    const [month, day, year] = item.date.split("/").map(Number);
+        const orderYear = year;
+
+        const index = years.indexOf(orderYear);
+
+        if (index !== -1) {
+            yearlySales[index] += Number(item.grandTotal);
+        }
+    });
+
+    return { years, yearlySales };
+};
+
+
+
+
+const mySalesChart = new Chart(saleChart, {
+    type: "line",
+
+    data: {
+        labels: labels,
+
+        datasets: [{
+          data: getMonthlySales(),
+            label: "Monthly Sales",
+            borderWidth: 3,
+            tension: 0.4,
+            borderColor: "#6366f1",
+            backgroundColor: "rgba(99, 102, 241, 0.12)",
+            pointBackgroundColor: "#6366f1",
+            pointBorderColor: "#ffffff",
+            pointBorderWidth: 2,
+            pointRadius: 5,
+            pointHoverRadius: 8,
+            fill: true,
+        }]
+    },
+
+options: {
+    responsive: true,
+    maintainAspectRatio: false,
+
+    plugins: {
+        legend: {
+            display: true,
+            position: "top"
+        }
+    },
+
+    scales: {
+        y: {
+            beginAtZero: true,
+            grid: {
+                color: "#f1f5f9"
+            },
+            ticks: {
+                callback: function(value) {
+                    return "Rs " + value.toLocaleString();
+                }
+            }
+        },
+
+        x: {
+            grid: {
+                display: false
+            }
+        }
+    }
+}
+
+    
+});
+
+salesFilter.addEventListener("change",()=>{
+
+ if (salesFilter.value === "monthly") {
+        mySalesChart.data.labels = months;
+        mySalesChart.data.datasets[0].data = getMonthlySales();
+
+        mySalesChart.update();
+    }else if (salesFilter.value === "weekly") {
+
+    const today = new Date();
+    const lastSevenDays = [];
+
+    for (let i = 6; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(today.getDate() - i);
+
+        lastSevenDays.push(
+            date.toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "short"
+            })
+        );
+    }
+
+    mySalesChart.data.labels = lastSevenDays;
+    mySalesChart.data.datasets[0].data = getWeeklySales();
+   mySalesChart.data.datasets[0].label = "Monthly Sales";
+
+    mySalesChart.update();
+}else if (salesFilter.value === "yearly") {
+
+    const result = getYearlySales();
+
+    mySalesChart.data.labels = result.years;
+
+    mySalesChart.data.datasets[0].data = result.yearlySales;
+
+    mySalesChart.data.datasets[0].label = "Yearly Sales";
+
+    mySalesChart.update();
+}
 })

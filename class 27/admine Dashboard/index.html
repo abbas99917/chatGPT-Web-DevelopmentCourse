@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admine Dashboard</title>
     <link rel="stylesheet" href="style.css">
+<!-- jspdf cnd -->
+
+
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
@@ -35,16 +38,47 @@
         <a href="#" data-page="customers">
             <i class="fa-solid fa-users"></i>
           <span>Customers</span></a>
+
+          <a href="" id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Log Out</span>
+          </a>
     </nav>
 
     </section>
 
         <div class="right-content">
 
-        <section class="navbar">
-            <!-- Navbar content -->
-  
-        </section>
+      
+<section class="navbar">
+    <div class="page-title">
+        <h2>Dashboard</h2>
+        <p>Welcome back, Admin!</p>
+    </div>
+
+    <div class="navbar-right">
+
+        <div class="search-box">
+            <input type="text" placeholder="Search here...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div class="notification">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notification-dot"></span>
+        </div>
+
+        <div class="admin-profile">
+            <img src="https://i.pravatar.cc/100?img=12" alt="Admin">
+            <div class="admin-info">
+                <h4>Admin</h4>
+                <span>Administrator</span>
+            </div>
+        </div>
+        <span class="ligt-dark"><i class="fa-solid fa-sun"></i></span>
+    </div>
+</section>
+
 
         <section class="main-content">
 
@@ -85,6 +119,44 @@
               </div>
               </div>
             </div>
+<!-- sales graphs section -->
+
+<section class="sales-overview">
+    <div class="sales-header">
+        <div>
+            <h2>Sales Overview</h2>
+            <p>Monthly sales performance</p>
+        </div>
+
+        <select id="salesFilter">
+            <option value="monthly">Monthly</option>
+            <option value="weekly">Weekly</option>
+            <option value="yearly">Yearly</option>
+        </select>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="salesChart"></canvas>
+    </div>
+</section>
+
+            <!-- recent orders -->
+             <section class="recent-order">
+                <h1 class="">Recent Orders</h1>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Customer Name</th>
+                            <th>Date</th>
+                            <th>Total Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body"></tbody>
+                </table>
+             </section>
 
             
           </section>
@@ -232,11 +304,12 @@
                 <button data-page="process" id="process" class="processing">Processing</button>
                 <button data-page="shipped" id="ship" class="shipped">Shipped</button>
                 <button data-page="pending" id="pending" class="pending">Pending</button>
-                <button data-page="cancele" id="cancelled" class="cancelled">Cancelled</button>
+                <button data-page="cancel" id="cancelled" class="cancelled">Cancelled</button>
                </div>
 
             </div>
-
+            <!-- export pdf -->
+            <button class="export-pdf">Export PDF</button>
           <div class="table-wrapper">
               <table border="">
                 <thead>
@@ -255,12 +328,66 @@
                 </tbody>
             </table>
           </div>
+
+       <!--  -->
+
+<div class="order-modal" id="orderModal">
+  <div class="order-modal-content">
+
+    <div class="order-modal-header">
+      <h2>Order Details</h2>
+      <button class="close-order">&times;</button>
+    </div>
+
+    <div class="order-details">
+      <!-- Order details JavaScript se show hongi -->
+    </div>
+
+  </div>
+</div>
+
           </section>
 
             <!-- customers overview  -->
-          <section class="dashboard-page" id="customers">
-            <h1>Customers overview</h1>
-          </section>
+        
+<section class="dashboard-page" id="customers">
+    <h1>Customers Management</h1>
+    <p>Manage and view all your customers.</p>
+
+    <div class="customer-stats">
+        <div class="customer-stat-card">
+            <h3>Total Customers</h3>
+            <h2 class="total-Customer">0</h2>
+        </div>
+    </div>
+
+    <div class="customer-table-section">
+        <div class="customer-header">
+            <h2>All Customers</h2>
+            <input
+                type="search"
+                id="searchCustomer"
+                placeholder="Search customers..."
+            >
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#Id</th>
+                        <th>Customer Name</th>
+                        <th>Email</th>
+                        <th>Total Orders</th>
+                        <th>Total Spending</th>
+                    </tr>
+                </thead>
+                <tbody class="customers-tbody"></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
 
 
 
@@ -273,8 +400,12 @@
     
 </main>
 
-
-
+<!-- jspdf cdn -->
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+<!-- grapp cdn -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>
+</body>
+
 </body>
 </html>

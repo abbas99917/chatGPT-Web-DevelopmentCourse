@@ -36,7 +36,7 @@ menu.addEventListener("click",()=>{
 // products-array
 
 
-const products = [
+const defaultProducts = [
     {
         id: 1,
         name: "Smart Watch Pro",
@@ -93,6 +93,7 @@ const products = [
     }
    
 ];
+let products = JSON.parse(localStorage.getItem("storeProducts")) || defaultProducts;
 
 
 // dynamic product rendering
@@ -116,7 +117,7 @@ prd.forEach((item)=>{
 
   
     <div class="product-details">
-        <h3 class="product-name">Rs${item.name}</h3>
+        <h3 class="product-name">${item.name}</h3>
         <div class="rating">
             <i class="fa-solid fa-star"></i>
             <span>${item.rating}</span>
