@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieHub - Discover Movies</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h2 class="logo">Movie<span>Hub</span></h2>
+
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#movies">Movies</a>
+            <a href="#favorites">Favorites</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="subtitle">YOUR CINEMA STARTS HERE</p>
+            <h1>Discover Your Next <span>Favorite Movie</span></h1>
+            <p class="description">
+                Explore thousands of movies, discover new stories
+                and find something amazing to watch.
+            </p>
+
+            <div class="search-box">
+                <input type="text" id="searchInput"
+                    placeholder="Search movies...">
+                <button id="searchBtn">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Movies Section -->
+    <main class="movies-section" id="movies">
+
+        <div class="section-heading">
+            <div>
+                <p class="subtitle">EXPLORE COLLECTION</p>
+                <h2>Popular Movies</h2>
+            </div>
+            <span class="movie-count">Discover & Enjoy</span>
+        </div>
+
+        <div class="movies-container">
+
+            <div class="movie-card">
+                <img src="https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg" alt="Movie poster">
+                <div class="movie-info">
+                    <h3>Oppenheimer</h3>
+                    <div class="movie-meta">
+                        <span>2023</span>
+                        <span>⭐ 8.3</span>
+                    </div>
+                    <button class="details-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" alt="Movie poster">
+                <div class="movie-info">
+                    <h3>Dune: Part Two</h3>
+                    <div class="movie-meta">
+                        <span>2024</span>
+                        <span>⭐ 8.5</span>
+                    </div>
+                    <button class="details-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://image.tmdb.org/t/p/w500/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg" alt="Movie poster">
+                <div class="movie-info">
+                    <h3>Interstellar</h3>
+                    <div class="movie-meta">
+                        <span>2014</span>
+                        <span>⭐ 8.7</span>
+                    </div>
+                    <button class="details-btn">View Details</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="Movie poster">
+                <div class="movie-info">
+                    <h3>The Dark Knight</h3>
+                    <div class="movie-meta">
+                        <span>2008</span>
+                        <span>⭐ 9.0</span>
+                    </div>
+                    <button class="details-btn">View Details</button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Favorites Section -->
+    <section class="favorites-section" id="favorites">
+        <h2>Your Favorite Movies</h2>
+        <p>Your saved movies will appear here.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 MovieHub. All Rights Reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
